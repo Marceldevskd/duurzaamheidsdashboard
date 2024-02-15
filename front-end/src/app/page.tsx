@@ -1,9 +1,17 @@
-import Image from "next/image";
+
 import styles from "./page.module.css";
+import Component from "../components/component"
+type propProps ={
+  hoi: string
+}
 
 export default function Home() {
+  const props: propProps = {
+    hoi: "doei"
+  }
   return (
     <main className={styles.main}>
+<<<<<<< Updated upstream
       <div className={styles.center}>
         <Image
           className={styles.logo}
@@ -71,6 +79,17 @@ export default function Home() {
         <h1>waterverbruik <hr />500</h1>
       </div>
 
+=======
+       <div className={styles.getal}>
+        <h1>
+          23
+        </h1> 
+       
+      </div>
+
+     
+      
+>>>>>>> Stashed changes
     </main>
   );
 }

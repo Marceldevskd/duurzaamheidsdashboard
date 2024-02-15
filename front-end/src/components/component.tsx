@@ -1,15 +1,15 @@
 import React from 'react';
 
 type componentProps = {
-  hoi: string
+	hoi: string
 }
 
-const Component: React.FC<componentProps> = ( {hoi} ) => {
-  return (
-    <div>
-      {hoi}
-    </div>
-  );
+const Component: React.FC<componentProps> = ({ hoi }) => {
+	return (
+		<div>
+			{hoi}
+		</div>
+	);
 };
 
 export default Component;

@@ -37,3 +37,6 @@ next-env.d.ts
 
 # compiled output
 /dist
+
+# database
+/db

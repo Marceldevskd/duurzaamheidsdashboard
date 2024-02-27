@@ -1,4 +1,3 @@
-
 import styles from "./page.module.css";
 import Component from "../components/component"
 type propProps ={

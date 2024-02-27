@@ -1,24 +1,14 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  padding: 6rem;
-  min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/* Center vertically */
+	align-items: center;
+	/* Center horizontally */
+	padding: 6rem;
+	min-height: 100vh;
 }
 
 .getal {
-  color: rgb(255, 255, 255);
+  color: red;
 }
-
-
-
-
-
-
-
-
-
-
-
-

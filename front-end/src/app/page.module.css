@@ -11,9 +11,26 @@
   color: rgb(255, 255, 255);
 }
 
+.waterverbruik_getal {
+  color: #22577A;
+  font-size: 200px; 
+}
 
+.waterverbruik_zin{
+  font-size: 25px;
+  color: #22577A;
+}
 
+.Liter{
+  font-size: 100px;
+  color: #22577A;
+  margin-top: 96px;
+}
 
+.getal_liter{
+ display: flex;
+ flex-direction: row;
+}
 
 
 

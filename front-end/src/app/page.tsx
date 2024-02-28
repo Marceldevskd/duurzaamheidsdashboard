@@ -8,9 +8,11 @@ const Home:React.FC = () => {
   return (
     <main className={styles.main}>
        <div className={styles.getal}>
-        <h1>
-          hallo
-        </h1> 
+        <div className={styles.square}>
+          <div className={styles.duurzaamheidsdashboard}>
+          <h1> Duurzaamheidsdashboard </h1>
+          </div>
+        </div > 
        
       </div>
     </main>

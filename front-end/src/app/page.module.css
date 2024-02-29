@@ -11,31 +11,43 @@
   color: rgb(255, 255, 255);
 }
 
+.square {
+  top: 0px;
+  height: 80px;
+  width: 100vw;
+  background-color: #22577a;
+  position: fixed;
+  right: 0px;
+}
+.duurzaamheidsdashboard {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin-top: 20px;
+  color: #4cb4ee;
+}
+.main {
+  background-color: #47e084;
+}
+
+/* siem zijn code */
 .waterverbruik_getal {
-  color: #22577A;
-  font-size: 200px; 
+  color: #22577a;
+  font-size: 200px;
 }
 
-.waterverbruik_zin{
+.waterverbruik_zin {
   font-size: 25px;
-  color: #22577A;
+  color: #22577a;
 }
 
-.Liter{
+.Liter {
   font-size: 100px;
-  color: #22577A;
+  color: #22577a;
   margin-top: 96px;
 }
 
-.getal_liter{
- display: flex;
- flex-direction: row;
+.getal_liter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
-
-
-
-
-
-
-
-

@@ -4,11 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "startServer": "node dist/server.js",
-	 "compile": "tsc ./src",
-	 "combination": "npm run startServer && tsc ./src",
-	 "dev": "nodemon --exec npm run combination"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",

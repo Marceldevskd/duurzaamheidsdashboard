@@ -1,27 +1,27 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import { ObjectId } from 'mongodb';
 
-interface SensorProps extends Document {
+export interface SensorProps {
 	_id: ObjectId;
 	name: string;
 	type: string;
 	unit: string;
-	readings: ReadingProps[];
+	readings: Map<Date, ReadingProps>;
 }
 
-interface ReadingProps extends Document {
+export interface ReadingProps{
 	date: Date;
 	totalML: number;
 	sensorReadings: SensorReadingsProps[];
 	usagePerHour: UsagePerHourProps[];
 }
 
-interface SensorReadingsProps extends Document {
+export interface SensorReadingsProps {
 	unixTime: number;
 	ML: number;
 }
 
-interface UsagePerHourProps extends Document {
+export interface UsagePerHourProps {
 	hour: number;
 	UnixStart: number;
 	UnixEnd: number;

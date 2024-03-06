@@ -7,6 +7,6 @@ export interface AddSensorProps {
 
 export interface ReadingDataProps {
 	sensorName: string;
-	time: number;
-	ML: number;
+	time?: number;
+	mL: number;
 }

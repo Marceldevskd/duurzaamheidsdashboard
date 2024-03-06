@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import Component from "../components/component"
 import React from "react";
+import LineChart from "../components/LineChart"
 
 const Home: React.FC = () => {
 

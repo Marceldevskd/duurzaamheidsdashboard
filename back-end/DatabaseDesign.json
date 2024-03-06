@@ -3,8 +3,9 @@
 		"Name": "Watersensor instituutsplein",
 		"Type": "WaterUsage",
 		"Unit": "mL",
-		"Readings": {
-			"date": {
+		"Readings": [
+			{
+				"date": "2016-01-01T00:00:00Z",
 				"totalML": 1234, /* niet altijd updaten, 1x per uur? */
 				"sensorReadings": [
 					{
@@ -20,6 +21,6 @@
 					}
 				]
 			}
-		}
+		]
 	}
 }

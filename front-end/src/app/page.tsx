@@ -1,3 +1,4 @@
+"use client"
 import styles from "./page.module.css";
 import Component from "../components/component"
 import React from "react";
@@ -25,6 +26,7 @@ const Home: React.FC = () => {
 					<div className={styles.Liter}>
 						L
 					</div>
+					{LineChart()}
 				</div>
 
 			</div>

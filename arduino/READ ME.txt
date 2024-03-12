@@ -1,0 +1,1 @@
+This arduino directory is a demo built for the Arduino UNO R4 WiFi model only.

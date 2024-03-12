@@ -24,7 +24,7 @@ app.post('/', async (req: Request, res: Response) => {
 		res.status(200).send('Sensor added successfully');
 	} catch (err) {
 		console.error('Error adding data:', err);
-		res.status(500).send('Internal Server Error');
+		res.status(500).send('Internal server error');
 	}
 });
 

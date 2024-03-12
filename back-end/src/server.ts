@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import addReading from './routes/add-reading';
 import addSensor from './routes/add-sensor';
+import getReadings from './routes/get-readings';
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/')
@@ -14,6 +15,7 @@ app.use(express.json());
 
 app.use('/add-reading', addReading);
 app.use('/add-sensor', addSensor);
+app.use('/get-reading', getReadings);
 
 // app.get('/read-reading', async (req, res) => {
 // 	try {

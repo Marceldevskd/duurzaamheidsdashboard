@@ -10,7 +10,6 @@ app.post('/', async (req: Request, res: Response) => {
 		// check the recieved data
 		const readingData = req.body as ReadingDataProps;
 
-		console.log(readingData);
 		// Validate the received data
 		if (!readingData.sensorName || !readingData.amount) {
 			return res.status(400).json({ error: 'Invalid data received' });

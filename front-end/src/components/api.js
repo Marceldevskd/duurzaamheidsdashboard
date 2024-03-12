@@ -3,7 +3,7 @@ export default function Home() {
 	const callAPI = async () => {
 		try {
 			const res = await fetch(
-				`https://jsonplaceholder.typicode.com/posts/1`
+				`http://localhost:3001/get-readings`
 			);
 			const data = await res.json();
 			console.log(data);

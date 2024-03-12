@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-	 "start": "nodemon --exec tsc src/server.ts"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "nodemon": "^3.1.0",
     "typescript": "^5.3.3"
   },
   "dependencies": {
@@ -18,7 +18,14 @@
     "@types/mongodb": "^4.0.7",
     "@types/mongoose": "^5.11.97",
     "express": "^4.18.2",
+    "graphql": "^16.8.1",
     "mongodb": "^6.3.0",
     "mongoose": "^8.2.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "./dist",
+      "./db"
+    ]
   }
 }

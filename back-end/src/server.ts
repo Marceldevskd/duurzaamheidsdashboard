@@ -1,50 +1,34 @@
 import express from 'express';
-import mongoose, { Schema, Document } from 'mongoose';
-
-// Define a Mongoose schema for the data
-interface IUser extends Document {
-    name: string;
-    email: string;
-    age: number;
-}
-
-const userSchema: Schema<IUser> = new Schema({
-    name: String,
-    email: String,
-    age: Number
-});
-
-const User = mongoose.model<IUser>('User', userSchema);
+import mongoose from 'mongoose';
+import addReading from './routes/add-reading';
+import addSensor from './routes/add-sensor';
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/')
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('Error connecting to MongoDB:', err));
+	.then(() => console.log('Connected to MongoDB'))
+	.catch(err => console.error('Error connecting to MongoDB:', err));
 
 // Express.js app
 const app = express();
+app.use(express.json());
 
-// Route to add dummy data
-app.get('/add-dummy-data', async (req, res) => {
-    try {
-        // Create instances of the User model with dummy data
-        const users = [
-            { name: 'John Doe', email: 'john@example.com', age: 30 },
-            { name: 'Jane Smith', email: 'jane@example.com', age: 25 }
-        ];
+app.use('/add-reading', addReading);
+app.use('/add-sensor', addSensor);
 
-        // Save the dummy data to the database
-        await User.insertMany(users);
-
-        res.status(200).send('Dummy data added successfully.');
-    } catch (err) {
-        console.error('Error adding dummy data:', err);
-        res.status(500).send('Internal Server Error');
-    }
-});
+// app.get('/read-reading', async (req, res) => {
+// 	try {
+// 		// Read the data from the database
+// 		const data = await Test.find({ name: "Number" });
+// 		const result = data[0].number;
+// 		res.status(200).json(result);
+// 	} catch (err) {
+// 		console.error('Error reading data:', err);
+// 		res.status(500).send('Internal Server Error');
+// 	}
+// });
 
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+	console.log(`Server is running on http://localhost:${PORT}`);
 });

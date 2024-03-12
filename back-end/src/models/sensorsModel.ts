@@ -18,14 +18,11 @@ export interface ReadingProps{
 
 export interface SensorReadingsProps {
 	unixTime: number;
-	ML: number;
+	mL: number;
 }
 
 export interface UsagePerHourProps {
-	hour: number;
-	UnixStart: number;
-	UnixEnd: number;
-	ML: number;
+	mL: number;
 }
 
 const SensorsSchema: Schema<SensorProps> = new Schema({
@@ -53,14 +50,11 @@ const ReadingSchema: Schema<ReadingProps> = new Schema({
 
 const SensorReadingSchema: Schema<SensorReadingsProps> = new Schema({
 	unixTime: Number,
-	ML: Number
+	mL: Number
 });
 
 const UsagePerHourSchema: Schema<UsagePerHourProps> = new Schema({
-	hour: Number,
-	UnixStart: Number,
-	UnixEnd: Number,
-	ML: Number
+	mL: Number
 });
 
 const Sensors = mongoose.model<SensorProps>('Sensors', SensorsSchema);

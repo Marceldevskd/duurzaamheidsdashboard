@@ -12,10 +12,9 @@ app.post('/', async (req: Request, res: Response) => {
 
 		console.log(readingData);
 		// Validate the received data
-		if (!readingData.sensorName || !readingData.mL) {
+		if (!readingData.sensorName || !readingData.amount) {
 			return res.status(400).json({ error: 'Invalid data received' });
 		}
-
 		
 		// adds the unix timestamp to the readingData object if its not already there
 		if (!readingData.time || typeof readingData.time !== 'number') {
@@ -49,7 +48,7 @@ app.post('/', async (req: Request, res: Response) => {
 		// Add the reading to the sensor object in the db
 		const sensorReading: SensorReadingsProps = {
 			unixTime: readingData.time,
-			ML: readingData.mL
+			mL: readingData.amount
 		};
 
 		if (sensor.readings.get(today)) {
@@ -57,10 +56,11 @@ app.post('/', async (req: Request, res: Response) => {
 			if (!readings) {
 				throw new Error('No readings found');
 			}
-			readings.totalML += readingData.mL;
+			readings.totalML += readingData.amount;
 			readings.sensorReadings.push(sensorReading as SensorReadingsProps);
-			
-			// saves it to the sensor object
+			readings.usagePerHour[hour].mL = (readings.usagePerHour[hour].mL || 0) + readingData.amount;
+
+			// Saves it to the sensor object
 			sensor.readings.set(today, readings);
 		}
 

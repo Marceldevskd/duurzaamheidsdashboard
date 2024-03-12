@@ -23,12 +23,12 @@ ChartJS.register(
 );
 
 const WaterverbruikData = [
-	{ month: "January", sales: 100 },
-	{ month: "February", sales: 150 },
-	{ month: "March", sales: 200 },
-	{ month: "April", sales: 120 },
-	{ month: "May", sales: 180 },
-	{ month: "June", sales: 250 },
+	{ month: "Monday", waterverbruik: 200 },
+	{ month: "Tuesday", waterverbruik: 250 },
+	{ month: "Wednesday", waterverbruik: 300 },
+	{ month: "Thursday", waterverbruik: 220 },
+	{ month: "Friday", waterverbruik: 280 },
+	{ month: "Saturday", waterverbruik: 350 },
 ];
 
 function LineChart() {
@@ -37,18 +37,18 @@ function LineChart() {
 		datasets: [
 			{
 				label: "MilliLiter",
-				data: WaterverbruikData.map((data) => data.Waterverbruik),
-				borderColor: "#cb0c9f",
+				data: WaterverbruikData.map((data) => data.waterverbruik),
+				borderColor: "blue",
 				borderWidth: 3,
-				pointBorderColor: "#cb0c9f",
+				pointBorderColor: "pink",
 				pointBorderWidth: 3,
 				tension: 0.5,
 				fill: true,
 				backgroundColor: (context) => {
 					const ctx = context.chart.ctx;
 					const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-					gradient.addColorStop(0, "#f797e1");
-					gradient.addColorStop(1, "white");
+					gradient.addColorStop(0, "lightblue");
+					gradient.addColorStop(1, "blue");
 					return gradient;
 				},
 			},
@@ -70,18 +70,17 @@ function LineChart() {
 				},
 				title: {
 					display: true,
-					text: "Sales",
+					text: "Water consumption in mL",
 					padding: {
 						bottom: 10,
 					},
 					font: {
-						size: 30,
-						style: "italic",
+						size: 23,
 						family: "Arial",
 					},
 				},
 				min: 0,
-				max: 300,
+				max: 500,
 			},
 			x: {
 				ticks: {
@@ -92,13 +91,12 @@ function LineChart() {
 				},
 				title: {
 					display: true,
-					text: "Month",
+					text: "Day",
 					padding: {
 						top: 10,
 					},
 					font: {
 						size: 30,
-						style: "italic",
 						family: "Arial",
 					},
 				},
@@ -109,12 +107,12 @@ function LineChart() {
 	return (
 		<div>
 			<h1 className="font-bold text-3xl text-center mt-10">
-				Line Chart using ChartJS
+				Waterverbruik op het instituutsplein:
 			</h1>
 			<div
 				style={{
-					width: "900px",
-					height: "400px",
+					width: "800px",
+					height: "350px",
 					padding: "20px",
 					cursor: "pointer",
 				}}

@@ -57,7 +57,8 @@ app.post('/', async (req: Request, res: Response) => {
 			}
 			readings.totalML += readingData.amount;
 			readings.sensorReadings.push(sensorReading as SensorReadingsProps);
-
+			readings.usagePerHour[hour].mL = (readings.usagePerHour[hour].mL || 0) + readingData.amount;
+			
 			// Saves it to the sensor object
 			sensor.readings.set(today, readings);
 		}

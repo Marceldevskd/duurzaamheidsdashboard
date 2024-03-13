@@ -25,7 +25,7 @@ const Home: React.FC = () => {
     <div className={styles.getal_liter}>
       <div className={styles.waterverbruik_getal}>
 			56
-		{/* <Timer />  */}
+		<Timer /> 
       </div>
       <div className={styles.Liter}>
         L

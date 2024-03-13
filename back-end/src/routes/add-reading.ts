@@ -1,4 +1,4 @@
-import express, {Request, Response} from 'express';
+import express, { Request, Response } from 'express';
 import Sensors from '../models/sensorsModel';
 import { ReadingDataProps } from '../models/postModels';
 import { ReadingProps, SensorReadingsProps } from '../models/sensorsModel';
@@ -14,8 +14,8 @@ app.post('/', async (req: Request, res: Response) => {
 		if (!readingData.sensorName || !readingData.amount) {
 			return res.status(400).json({ error: 'Invalid data received' });
 		}
-		
-		// adds the unix timestamp to the readingData object if its not already there
+
+		// Adds the unix timestamp to the readingData object if its not already there
 		if (!readingData.time || typeof readingData.time !== 'number') {
 			readingData.time = Date.now();
 		}
@@ -57,7 +57,6 @@ app.post('/', async (req: Request, res: Response) => {
 			}
 			readings.totalML += readingData.amount;
 			readings.sensorReadings.push(sensorReading as SensorReadingsProps);
-			readings.usagePerHour[hour].mL = (readings.usagePerHour[hour].mL || 0) + readingData.amount;
 
 			// Saves it to the sensor object
 			sensor.readings.set(today, readings);

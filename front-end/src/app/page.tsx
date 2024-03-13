@@ -3,9 +3,10 @@ import styles from "./page.module.css";
 import Component from "../components/component"
 import React from "react";
 import LineChart from "../components/LineChart"
+import Timer from "../components/Timer";
+
 
 const Home: React.FC = () => {
-
 
 	return (
 		<main className={styles.main}>
@@ -16,8 +17,23 @@ const Home: React.FC = () => {
 					</div>
 				</div >
 			</div>
-				{LineChart()}
+			{/* siem zijn code  */}
+			<div className={styles.Waterverbruik}>
+			<div className={styles.waterverbruik_zin}>
+			Water consumption on the institute square :
+    </div>
+    <div className={styles.getal_liter}>
+      <div className={styles.waterverbruik_getal}>
+        56
+      </div>
+      <div className={styles.Liter}>
+        L
+      </div>
+    </div>
+	</div>
+		{LineChart()}
+		{/* <Timer />  */}
 		</main>
 	);
 };
-export default Home;
+export default Home;	

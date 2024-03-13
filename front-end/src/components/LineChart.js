@@ -107,7 +107,7 @@ function LineChart() {
 	return (
 		<div>
 			<h1 className="font-bold text-3xl text-center mt-10">
-				Waterverbruik op het instituutsplein:
+				Water consumption shown in a linechart:
 			</h1>
 			<div
 				style={{

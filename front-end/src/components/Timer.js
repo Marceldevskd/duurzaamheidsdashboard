@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
+// import { Home } from  "./front-end\src\components\api.js";
 
 const Timer = () => {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setSeconds(prevSeconds => prevSeconds + 1);
+      // let data = Home ()
+      // setSeconds(prevSeconds => prevSeconds + 1);
     }, 1000);
+
+    
 
     // Cleanup functie om de interval te stoppen bij het unmounten van het component
     return () => clearInterval(intervalId);

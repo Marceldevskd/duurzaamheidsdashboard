@@ -1,5 +1,6 @@
 "use client";
 import { Line } from "react-chartjs-2";
+import { styles } from "../app/page.module.css";
 
 import {
 	Chart as ChartJS,
@@ -106,7 +107,7 @@ function LineChart() {
 
 	return (
 		<div>
-			<h1 className="font-bold text-3xl text-center mt-10">
+			<h1>
 				Water consumption shown in a linechart:
 			</h1>
 			<div
@@ -114,6 +115,7 @@ function LineChart() {
 					width: "800px",
 					height: "350px",
 					padding: "20px",
+					marginLeft: "100px",
 					cursor: "pointer",
 				}}
 			>

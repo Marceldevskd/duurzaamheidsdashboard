@@ -24,7 +24,8 @@ const Home: React.FC = () => {
     </div>
     <div className={styles.getal_liter}>
       <div className={styles.waterverbruik_getal}>
-        56
+			56
+		{/* <Timer />  */}
       </div>
       <div className={styles.Liter}>
         L
@@ -32,7 +33,7 @@ const Home: React.FC = () => {
     </div>
 	</div>
 		{LineChart()}
-		{/* <Timer />  */}
+	
 		</main>
 	);
 };

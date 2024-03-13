@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use('/add-reading', addReading);
 app.use('/add-sensor', addSensor);
-app.use('/get-reading', getReadings);
+app.use('/get-readings', getReadings);
 
 // app.get('/read-reading', async (req, res) => {
 // 	try {

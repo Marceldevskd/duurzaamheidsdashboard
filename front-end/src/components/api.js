@@ -3,7 +3,7 @@ export default function Home() {
 	const callAPI = async () => {
 		try {
 			const res = await fetch(
-				`http://localhost:3001/get-readings`
+				`http://localhost:4000/get-readings`
 			);
 			const data = await res.json();
 			console.log(data);

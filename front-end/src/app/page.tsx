@@ -18,7 +18,7 @@ const Home: React.FC = () => {
       {/* siem zijn code  */}
       <div className={styles.Waterverbruik}>
         <div className={styles.waterverbruik_zin}>
-          Water consumption on the institute square :
+          Water consumption HU Open-ICT :
         </div>
         <div className={styles.getal_liter}>
           <div className={styles.waterverbruik_getal}>

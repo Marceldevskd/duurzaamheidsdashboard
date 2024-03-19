@@ -1,31 +1,28 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import { ObjectId } from 'mongodb';
 
-interface SensorProps extends Document {
+export interface SensorProps {
 	_id: ObjectId;
 	name: string;
 	type: string;
 	unit: string;
-	readings: ReadingProps[];
+	readings: Map<Date, ReadingProps>;
 }
 
-interface ReadingProps extends Document {
+export interface ReadingProps{
 	date: Date;
 	totalML: number;
 	sensorReadings: SensorReadingsProps[];
 	usagePerHour: UsagePerHourProps[];
 }
 
-interface SensorReadingsProps extends Document {
+export interface SensorReadingsProps {
 	unixTime: number;
-	ML: number;
+	mL: number;
 }
 
-interface UsagePerHourProps extends Document {
-	hour: number;
-	UnixStart: number;
-	UnixEnd: number;
-	ML: number;
+export interface UsagePerHourProps {
+	mL: number;
 }
 
 const SensorsSchema: Schema<SensorProps> = new Schema({
@@ -53,14 +50,11 @@ const ReadingSchema: Schema<ReadingProps> = new Schema({
 
 const SensorReadingSchema: Schema<SensorReadingsProps> = new Schema({
 	unixTime: Number,
-	ML: Number
+	mL: Number
 });
 
 const UsagePerHourSchema: Schema<UsagePerHourProps> = new Schema({
-	hour: Number,
-	UnixStart: Number,
-	UnixEnd: Number,
-	ML: Number
+	mL: Number
 });
 
 const Sensors = mongoose.model<SensorProps>('Sensors', SensorsSchema);

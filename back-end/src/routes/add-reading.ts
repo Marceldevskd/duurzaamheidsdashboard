@@ -31,15 +31,23 @@ app.post('/', async (req: Request, res: Response) => {
 			usagePerHour: Array.from({ length: 24 }, () => ({ amount: 0 } as UsagePerHourProps)) // Initialize usagePerHour array with UsagePerHourProps objects
 		};
 
-		let existingReading = sensor.readings.find((reading) => reading.date.getTime() === today.getTime());
+		let existingReadingI: number = sensor.readings.findIndex((reading) => reading.date == today);
+
+		let existingReading: undefined | ReadingProps = sensor.readings[existingReadingI];
+
 		if (!existingReading) {
 			sensor.readings.push(dayTemplate);
-			existingReading = dayTemplate;
+			existingReadingI = sensor.readings.length - 1;
 		}
 
-		existingReading.totalAmount += readingData.amount;
-		existingReading.sensorReadings.push({ unixTime: readingData.time || Date.now(), amount: readingData.amount } as SensorReadingsProps);
-		existingReading.usagePerHour[hour].amount += readingData.amount;
+		if (existingReadingI > -1) {
+			sensor.readings[existingReadingI].totalAmount += readingData.amount;
+			sensor.readings[existingReadingI].sensorReadings.push({ unixTime: readingData.time || Date.now(), amount: readingData.amount } as SensorReadingsProps);
+			sensor.readings[existingReadingI].usagePerHour[hour].amount += readingData.amount;
+		} else {
+			console.log(existingReading, existingReadingI)
+			throw new Error('Error adding data');
+		}
 
 		await sensor.save();
 		console.log('Reading added successfully', sensor);

@@ -6,7 +6,9 @@ const app = express.Router();
 
 app.get('/', async (req: Request, res: Response) => {
 	try {
-		const data = req.body as GetReadingsProps;
+		const data: GetReadingsProps = {
+			sensorName: req.query.sensorName as string
+		};
 		console.log('data:', data)
 		if (!data.sensorName) {
 			return res.status(400).json({ error: 'Invalid data received' });

@@ -22,7 +22,7 @@ app.post('/', async (req: Request, res: Response) => {
 		today.setUTCHours(-1, 0, 0, 0) // Subtract 1 hour to get UTC+1 midnight
 		today.toISOString(); // Convert to ISO string to get rid of timezone offset
 
-		const hour = today.getUTCHours();
+		let hour = new Date(readingData.time || Date.now()).getHours(); // Get current hour
 
 		const dayTemplate: ReadingProps = {
 			date: today,

@@ -1,70 +1,48 @@
 import express, { Request, Response } from 'express';
 import Sensors from '../models/sensorsModel';
 import { ReadingDataProps } from '../models/postModels';
-import { ReadingProps, SensorReadingsProps } from '../models/sensorsModel';
+import { ReadingProps, SensorReadingsProps, UsagePerHourProps } from '../models/sensorsModel';
 
 const app = express.Router();
 
 app.post('/', async (req: Request, res: Response) => {
 	try {
-		// check the recieved data
 		const readingData = req.body as ReadingDataProps;
 
-		// Validate the received data
-		if (!readingData.sensorName || !readingData.amount) {
+		if (!readingData.sensorName || !readingData.amount || typeof readingData.amount !== 'number') {
 			return res.status(400).json({ error: 'Invalid data received' });
 		}
 
-		// Adds the unix timestamp to the readingData object if its not already there
-		if (!readingData.time || typeof readingData.time !== 'number') {
-			readingData.time = Date.now();
-		}
-
-		// Process the received data
-		// Find the sensor in the database
 		const sensor = await Sensors.findOne({ name: readingData.sensorName });
 		if (!sensor) {
 			return res.status(400).json({ error: 'Invalid sensor name' });
 		}
 
-		const today = new Date(readingData.time);
-		today.setUTCHours(0, 0, 0, 0);
+		let today = new Date(readingData.time || Date.now()); // Use current time if time is not provided
+		today.setUTCHours(-1, 0, 0, 0) // Subtract 1 hour to get UTC+1 midnight
+		today.toISOString(); // Convert to ISO string to get rid of timezone offset
 
-		const hour = new Date(readingData.time).getUTCHours();
+		const hour = today.getUTCHours();
 
 		const dayTemplate: ReadingProps = {
 			date: today,
-			totalML: 0,
+			totalAmount: 0,
 			sensorReadings: [],
-			usagePerHour: []
+			usagePerHour: Array.from({ length: 24 }, () => ({ amount: 0 } as UsagePerHourProps)) // Initialize usagePerHour array with UsagePerHourProps objects
 		};
 
-		// Check if the date already exists
-		if (!sensor.readings.has(today)) {
-			// add the date to the sensor
-			sensor.readings.set(today, dayTemplate);
-		}
-		// Add the reading to the sensor object in the db
-		const sensorReading: SensorReadingsProps = {
-			unixTime: readingData.time,
-			mL: readingData.amount
-		};
-
-		if (sensor.readings.get(today)) {
-			const readings = sensor.readings.get(today);
-			if (!readings) {
-				throw new Error('No readings found');
-			}
-			readings.totalML += readingData.amount;
-			readings.sensorReadings.push(sensorReading as SensorReadingsProps);
-			readings.usagePerHour[hour].mL = (readings.usagePerHour[hour].mL || 0) + readingData.amount;
-			
-			// Saves it to the sensor object
-			sensor.readings.set(today, readings);
+		let existingReading = sensor.readings.find((reading) => reading.date.getTime() === today.getTime());
+		if (!existingReading) {
+			sensor.readings.push(dayTemplate);
+			existingReading = dayTemplate;
 		}
 
-		// Pushes the sensor object to the database
+		existingReading.totalAmount += readingData.amount;
+		existingReading.sensorReadings.push({ unixTime: readingData.time || Date.now(), amount: readingData.amount } as SensorReadingsProps);
+		existingReading.usagePerHour[hour].amount += readingData.amount;
+
 		await sensor.save();
+		console.log('Reading added successfully', sensor);
 		res.status(200).send('Reading added successfully');
 	} catch (err) {
 		console.error('Error adding data:', err);

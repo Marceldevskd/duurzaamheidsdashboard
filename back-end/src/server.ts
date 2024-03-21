@@ -6,9 +6,9 @@ import getReadings from "./routes/get-readings";
 
 // Connect to MongoDB
 mongoose
-  .connect("mongodb://127.0.0.1:27017/")
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("Error connecting to MongoDB:", err));
+	.connect("mongodb://127.0.0.1:27017/")
+	.then(() => console.log("Connected to MongoDB"))
+	.catch((err) => console.error("Error connecting to MongoDB:", err));
 
 // Express.js app
 const app = express();
@@ -33,5 +33,5 @@ app.use("/get-readings", getReadings);
 // Start the server
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+	console.log(`Server is running on http://localhost:${PORT}`);
 });

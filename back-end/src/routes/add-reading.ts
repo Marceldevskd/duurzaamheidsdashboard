@@ -19,7 +19,7 @@ app.post('/', async (req: Request, res: Response) => {
 		}
 
 		let today = new Date(readingData.time || Date.now()); // Use current time if time is not provided
-		today.setUTCHours(-1, 0, 0, 0) // Subtract 1 hour to get UTC+1 midnight
+		today.setUTCHours(-1, 0, 0, 0); // Subtract 1 hour to get UTC+1 midnight
 		today.toISOString(); // Convert to ISO string to get rid of timezone offset
 
 		let hour = new Date(readingData.time || Date.now()).getHours(); // Get current hour

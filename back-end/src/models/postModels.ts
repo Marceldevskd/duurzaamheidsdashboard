@@ -8,5 +8,5 @@ export interface AddSensorProps {
 export interface ReadingDataProps {
 	sensorName: string;
 	time?: number;
-	mL: number;
+	amount: number;
 }

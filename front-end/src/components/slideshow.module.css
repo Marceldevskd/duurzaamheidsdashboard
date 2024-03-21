@@ -10,6 +10,7 @@
 
 .max_width {
     max-width: 300px;
+    min-width: 300px;
     /* Adjust width as needed */
 }
 

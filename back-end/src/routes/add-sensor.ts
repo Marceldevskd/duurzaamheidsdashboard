@@ -6,10 +6,10 @@ const app = express.Router();
 
 app.post('/', async (req: Request, res: Response) => {
 	try {
-		const addSensorData = req.body as AddSensorProps; // Update variable name
+		const addSensorData = req.body as AddSensorProps;
 
 		// Validate the received data
-		if (!addSensorData.name || !addSensorData.type || !addSensorData.unit) { // Update variable names
+		if (!addSensorData.name || !addSensorData.type || !addSensorData.unit) {
 			return res.status(400).json({ error: 'Invalid data received' });
 		}
 

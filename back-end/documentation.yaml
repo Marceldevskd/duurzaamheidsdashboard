@@ -59,6 +59,7 @@ paths:
               type: object
               required: 
                 - companyID
+                - location
               properties:
                 companyID: 
                   type: string

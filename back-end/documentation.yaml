@@ -1,0 +1,124 @@
+# open this in https://editor.swagger.io/ to see the documentation in a more readable way
+
+openapi: 3.0.0
+info:
+  title: Duurzaamheidsdashboard API docs
+  description: De API endpoints documentatie voor het duurzaamheidsdashboard Blok CD
+  version: 1.0.0
+paths:
+  /get-readings:
+    get:
+      summary: Retrieve sensor readings
+      parameters:
+        - in: query
+          name: sensorName
+          schema:
+            type: string
+          description: Name of the sensor (optional)
+        - in: query
+          name: type
+          schema:
+            type: string
+          description: Type of sensors to filter by (optional)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Reading'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: Internal server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+      security: [] # Add security schemes if needed
+  /light-advice:
+    post:
+      summary: Retrieve sensor readings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: 
+                - companyID
+              properties:
+                companyID: 
+                  type: string
+                  description: For security
+                location: 
+                  type: string
+                  description: makes it possible for a company to be able to have these sensors at more locations
+                advice:
+                  type: boolean
+                  description: Advice if the lights should be on or off
+                state: 
+                  type: boolean
+                  description: State of the lights
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: Internal server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+      security: [] # Add security schemes if needed  
+components:
+  schemas:
+    Reading:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+          description: Date and time of the reading
+        totalAmount:
+          type: number
+          description: Total amount measured
+        sensorReadings:
+          type: array
+          items:
+            type: object
+            properties:
+              amount: 
+                type: number
+              time:
+                type: number
+        usagePerHour:
+          type: array
+          items:
+            type: object
+            properties:
+              amount:
+                type: number

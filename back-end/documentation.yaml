@@ -50,7 +50,7 @@ paths:
       security: [] # Add security schemes if needed
   /light-advice:
     post:
-      summary: Retrieve sensor readings
+      summary: Get the readings of the lights that 
       requestBody:
         required: true
         content:

@@ -1,4 +1,4 @@
-import express, {Request, Response} from 'express';
+import express, { Request, Response } from 'express';
 import Companies from '../models/companyModel';
 import { AddCompanyProps } from '../models/postModels';
 import { createBase64String } from '../functions/crypto';
@@ -37,7 +37,7 @@ app.post('/', async (req: Request, res: Response) => {
 		}
 
 		// Create hash for the company
-		const companyHash: string | null = await createHash(AddCompanyData.companyName);
+		const companyHash: string | null = await createHash(companyToken);
 
 		if (!companyHash) {
 			throw new Error('Error creating hash');
@@ -47,18 +47,17 @@ app.post('/', async (req: Request, res: Response) => {
 		await Companies.create({
 			companyID: companyID,
 			name: AddCompanyData.companyName,
-			hash: companyHash,
+			companyHash: companyHash
 		});
 
 		// When the company is added successfully, send a response with the token, companyID and companyName
 		const response = {
 			companyName: AddCompanyData.companyName,
 			companyID: companyID,
-			companyToken: companyToken,	
+			companyToken: companyToken
 		};
 
 		res.status(200).json(response);
-		res.status(200).send('Company added successfully');
 	} catch (err) {
 		console.error('Error adding data:', err);
 		res.status(500).send('Internal server error');

@@ -39,7 +39,7 @@ const ReadingSchema: Schema<ReadingProps> = new Schema({
 	usagePerHour: [UsagePerHourSchema]
 });
 
-const SensorsSchema: Schema<SensorProps> = new Schema({
+export const SensorsSchema: Schema<SensorProps> = new Schema({
 	name: String,
 	type: String,
 	unit: String,

@@ -1,17 +1,29 @@
 import express, { Request, Response } from 'express';
-import Sensors from '../models/sensorsModel';
+import mongoose from 'mongoose';
 import { ReadingDataProps } from '../models/postModels';
-import { ReadingProps, SensorReadingsProps, UsagePerHourProps } from '../models/sensorsModel';
+import { ReadingProps, SensorReadingsProps, UsagePerHourProps, SensorProps, SensorsSchema } from '../models/sensorsModel';
+
+declare module 'express-serve-static-core' {
+	interface Request {
+		companyID?: string;
+	}
+}
 
 const app = express.Router();
 
 app.post('/', async (req: Request, res: Response) => {
 	try {
 		const readingData = req.body as ReadingDataProps;
-
-		if (!readingData.sensorName || !readingData.amount || typeof readingData.amount !== 'number') {
+		if (!readingData.sensorName || !readingData.amount || typeof readingData.amount !== 'number' || typeof readingData.sensorName !== 'string') {
 			return res.status(400).json({ error: 'Invalid data received' });
 		}
+
+		// selects correct collection based on companyID
+		const collectionName: string | undefined = req.companyID;
+		if (!collectionName) {
+			return res.status(500).send('Internal server error');
+		}
+		const Sensors = mongoose.model<SensorProps>(collectionName, SensorsSchema);
 
 		const sensor = await Sensors.findOne({ name: readingData.sensorName });
 		if (!sensor) {

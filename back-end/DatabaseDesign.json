@@ -1,15 +1,22 @@
 {
-	"SensorId": {
-		"Name": "Watersensor instituutsplein",
-		"Type": "WaterUsage",
-		"Unit": "mL",
-		"Readings": [
+	"companies": [
+		{
+			"name": "bedrijfsnaam",
+			"companyID": "ASD+/123",
+			"companyHash": "HASHOFTHECOMPANYUSINGARGON"
+		}
+	],
+	"companyID": {
+		"name": "Watersensor instituutsplein",
+		"type": "WaterUsage",
+		"unit": "mL",
+		"readings": [
 			{
 				"date": "2016-01-01T00:00:00Z",
 				"totalAmount": 1234,
 				"sensorReadings": [
 					{
-						"UnixTime": 1234567890,
+						"unixTime": 1234567890,
 						"amount": 1234
 					}
 				],

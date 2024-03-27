@@ -10,3 +10,7 @@ export interface ReadingDataProps {
 	time?: number;
 	amount: number;
 }
+
+export interface AddCompanyProps {
+	companyName: string;
+}

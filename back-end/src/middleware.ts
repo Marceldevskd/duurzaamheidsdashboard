@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import Companies from './models/companyModel';
 
 const middleware = (req: Request, res: Response, next: NextFunction) => {
 	// Middleware logic goes here

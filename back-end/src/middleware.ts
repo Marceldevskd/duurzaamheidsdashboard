@@ -25,9 +25,10 @@ const middleware = async (req: Request, res: Response, next: NextFunction) => {
 	if (!company) {
 		return res.status(401).json({ error: 'Authorization header invalid' });
 	}
+
 	console.log(authorizationHeader, company.companyHash);
 	// Check if the hash is correct
-	if (!await compareHash(company.companyToken, company.companyHash)) {
+	if (!await compareHash(authorizationHeader, company.companyHash)) {
 		return res.status(401).json({ error: 'Authorization header invalid' });
 	}
 

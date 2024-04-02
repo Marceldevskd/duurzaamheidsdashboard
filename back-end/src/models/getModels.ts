@@ -1,3 +1,4 @@
 export interface GetReadingsProps {
-    sensorName: string;
+	sensorName: string;
+	type: string;
 }

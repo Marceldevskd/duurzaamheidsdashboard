@@ -1,8 +1,9 @@
-import styles from "./page.module.css";
+import styles from "@/app/page.module.css";
 import Component from "@/components/component"
 import React from "react"; 
 import BarChart from "@/components/BarChart"
 import ApiComponent from "@/components/api"
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
 const Home:React.FC = () => {
@@ -31,7 +32,7 @@ const Home:React.FC = () => {
       <BarChart />
       </div>
       
-      <ApiComponent/>
+      {/* <ApiComponent/> */}
       
     </main>
   );

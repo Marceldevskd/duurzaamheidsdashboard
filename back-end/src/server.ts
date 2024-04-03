@@ -4,7 +4,7 @@ import addReading from "./routes/add-reading";
 import addSensor from "./routes/add-sensor";
 import getReadings from "./routes/get-readings";
 import middleware from "./middleware";
-// ...
+import cors from 'cors';
 
 // Connect to MongoDB
 mongoose
@@ -16,6 +16,7 @@ mongoose
 // Express.js app
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.use("/add-reading", addReading);
 app.use("/add-sensor", addSensor);

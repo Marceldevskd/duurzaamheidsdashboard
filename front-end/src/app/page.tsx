@@ -5,6 +5,7 @@ import Component from "../components/component";
 import React from "react";
 import LineChart from "../components/LineChart";
 import Timer from "../components/Timer";
+import API from "../components/api";
 
 const Home: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const Home: React.FC = () => {
             <h1> Duurzaamheidsdashboard </h1>
           </div>
         </div>
+		  <API />
         {/* siem zijn code */}
         <div className={styles.waterverbruik_zin}>
           Waterverbruik van de kraan op het ICT instituutsplein:

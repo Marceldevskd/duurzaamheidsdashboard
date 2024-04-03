@@ -10,11 +10,11 @@ char ssid[] = SECRET_SSID;
 char pass[] = SECRET_PASS;
 int wifiStatus = WL_IDLE_STATUS;  // WiFi verbinding status [WL_IDLE_STATUS = 0] & [WL_CONNECTED = 3]
 int hallPin = 2;                  // De pin waarop pulsen worden ontvangen door de hallsensor
-float measuredWater = 25;         // Gemeten totaal water [10% foutmarge]
+float measuredWater = 0;         // Gemeten totaal water [10% foutmarge]
 float postData;                   // Data die we willen versturen
 unsigned long lastUsed;           // Als lastUsed groter is dan 10 minuten wordt de WiFi verbinding verbroken
 const int DELAY_TIME = 600000;    // Wachttijd voor verbreken WiFi [Origineel idee was ook om de 10 minuten een NTP server te pollen maar onze backender is eindelijk akkoord gegaan dat de server zelf timestamps regelt]
-char server[] = "dachthetniet.com";
+char server[] = "dachthetniet.nl";
 WiFiSSLClient client;
 // SETUP
 
@@ -63,19 +63,17 @@ void wifiShutdown() {  // Checkt of de tijd voorbij is en WiFi aan staat.
 }  // LET OP: millis() zal na ongeveer 50 dagen overflowen, dat betekent dat WiFi wordt uitgezet ookal kan het zijn dat de kraan binnen 10 minuten is gebruikt.
 
 void waterPulse() {
-  measuredWater += 1.81;
+  measuredWater += 1.81;  // Gecalibreerd mL/pulse
 }
 
 void sendData() {
   
-  char buffer[32];
-  char sendata[] = "{\"sensorName\": \"Water-1\", \"amount\": ";
-  char extra[] = "}";
-  sprintf(buffer, "%s%f%s", sendata, postData, extra);
+  char buffer[48];
+  sprintf(buffer, "{\"sensorName\": \"Water-4\", \"amount\": %f }", postData);
 
   if (client.connect(server, 443)) {  // Start de verbinding met de server
     client.println("POST /api/add-reading HTTP/1.1");
-    client.println("HOST: dachthetniet.com");
+    client.println("HOST: dachthetniet.nl");
     client.println("Content-Type: application/json");
     client.print("Content-Length: ");
     client.println(strlen(buffer));

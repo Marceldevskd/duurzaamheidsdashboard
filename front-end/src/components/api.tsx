@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import styles from '../app/page.module.css';
 
-export default function Home() {
+const API: React.FC = () => {
     const [timerId, setTimerId] = useState(null);
 
     const callAPI = async () => {
         try {
             const res = await fetch(
-					`http://localhost:4000/get-readings?sensorName=test1`, // Voeg de query parameters toe aan de URL
+					`http://localhost:4000/get-readings?sensorName=Water-1`, // Voeg de query parameters toe aan de URL
                 {
                     method: 'GET',
                     headers: {
@@ -25,12 +25,23 @@ export default function Home() {
 
     useEffect(() => {
         // Start de timer wanneer het component gemonteerd wordt
-        const id = setInterval(callAPI, 10000); // Voer de API-call elke 10 seconden uit
+        const id: any = setInterval(callAPI, 10000); // Voer de API-call elke 10 seconden uit
         setTimerId(id);
 
         // Stop de timer wanneer het component wordt verwijderd
         return () => {
-            clearInterval(timerId);
+            if (timerId)
+                clearInterval(timerId);
         };
     }, []); // Voer deze effect alleen uit bij de eerste render
+    useEffect(() => {
+        callAPI();
+    }, []);
+
+    return (
+        <>
+
+        </>
+    )
 }
+export default API

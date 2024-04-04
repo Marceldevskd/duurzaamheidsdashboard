@@ -13,20 +13,18 @@ const Home: React.FC = () => {
       <main className={styles.main}>
         <div className={styles.row}>
           <div className={styles.column_hu}>
-            <img src="\Images\hu-logo.png" alt="HU" className={styles.img_hu}/>
+            <img src="\Images\hu-logo.png" alt="HU" className={styles.img_hu} />
           </div>
-        </div>
           <div className={styles.column_head}>
             <div>
               <Header />
             </div>
-        </div>
+          </div>
 
           <div className={styles.column_content}>
-              {/* siem zijn code */}
-              <API />
-            <div className={styles.Waterverbruik}>
-            </div>
+            {/* siem zijn code */}
+            <API />
+            <div className={styles.Waterverbruik}></div>
             {LineChart()}
           </div>
 
@@ -35,6 +33,7 @@ const Home: React.FC = () => {
               <Slideshow />
             </div>
           </div>
+        </div>
       </main>
     </body>
   );

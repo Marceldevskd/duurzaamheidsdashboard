@@ -1,7 +1,6 @@
 .slideContainer {
   display: flex;
   width: 100%;
-  animation: slideAnimation 10s infinite;
   overflow: hidden;
 }
 

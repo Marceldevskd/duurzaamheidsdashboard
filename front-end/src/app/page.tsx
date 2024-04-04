@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 import Component from "../components/component";
 import React from "react";
 import LineChart from "../components/LineChart";
-import Timer from "../components/Timer";
+// import Timer from "../components/Timer";
 import API from "../components/api";
 
 const Home: React.FC = () => {
@@ -16,7 +16,6 @@ const Home: React.FC = () => {
             <h1> Duurzaamheidsdashboard </h1>
           </div>
         </div>
-		  <API />
         {/* siem zijn code */}
         <div className={styles.waterverbruik_zin}>
           Waterverbruik van de kraan op het ICT instituutsplein:
@@ -25,14 +24,14 @@ const Home: React.FC = () => {
       <div className={styles.Waterverbruik}>
         <div className={styles.getal_liter}>
           <div className={styles.waterverbruik_getal}>
-          {api()}
+            <API />
           </div>
           {/* <div className={styles.Liter}>mL</div> */}
         </div>
       </div>
       {LineChart()}
       {/* Add more content here */}
-      <div className={styles.slideshowContainer}> 
+      <div className={styles.slideshowContainer}>
         <Slideshow />
       </div>
     </main>

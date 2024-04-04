@@ -20,16 +20,11 @@ const Home: React.FC = () => {
         <div className={styles.waterverbruik_zin}>
           Waterverbruik van de kraan op het ICT instituutsplein:
         </div>
-      <div className={styles.Waterverbruik}>
-        <div className={styles.getal_liter}>
-          <div className={styles.waterverbruik_getal}>
-            <API />
 
           <div className={styles.column_head}>
             <div>
               <Header />
             </div>
-          </div>
         </div>
 
           <div className={styles.column_content}>
@@ -45,16 +40,8 @@ const Home: React.FC = () => {
               <Slideshow />
             </div>
           </div>
-          {/* Add more content here */}
-        </div>
-      </div>
-      {LineChart()}
-      {/* Add more content here */}
-      <div className={styles.slideshowContainer}>
-        <Slideshow />
-      </div>
-    </main>
+      </main>
     </body>
-    );
-    };
+  );
+};
 export default Home;

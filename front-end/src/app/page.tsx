@@ -1,10 +1,11 @@
 "use client";
+import Slideshow from '../components/slideshow'; // Import Slideshow componentC
 import styles from "./page.module.css";
 import Component from "../components/component";
 import React from "react";
 import LineChart from "../components/LineChart";
-import api  from "../components/api";
-
+import Timer from "../components/Timer";
+import API from "../components/api";
 
 const Home: React.FC = () => {
   return (
@@ -15,12 +16,13 @@ const Home: React.FC = () => {
             <h1> Duurzaamheidsdashboard </h1>
           </div>
         </div>
-      </div>
-      {/* siem zijn code  */}
-      <div className={styles.Waterverbruik}>
+		  <API />
+        {/* siem zijn code */}
         <div className={styles.waterverbruik_zin}>
-          Water consumption HU Open-ICT :
+          Waterverbruik van de kraan op het ICT instituutsplein:
         </div>
+      </div>
+      <div className={styles.Waterverbruik}>
         <div className={styles.getal_liter}>
           <div className={styles.waterverbruik_getal}>
           {api()}
@@ -29,7 +31,11 @@ const Home: React.FC = () => {
         </div>
       </div>
       {LineChart()}
+      {/* Add more content here */}
+      <div className={styles.slideshowContainer}> 
+        <Slideshow />
+      </div>
     </main>
   );
 };
-export default Home;
+export default Home

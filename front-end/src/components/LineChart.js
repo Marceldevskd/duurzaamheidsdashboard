@@ -71,7 +71,6 @@ function LineChart() {
 				},
 				title: {
 					display: true,
-					text: "Water consumption in mL",
 					padding: {
 						bottom: 10,
 					},
@@ -92,7 +91,6 @@ function LineChart() {
 				},
 				title: {
 					display: true,
-					text: "Day",
 					padding: {
 						top: 10,
 					},
@@ -108,7 +106,7 @@ function LineChart() {
 	return (
 		<div>
 			<h1>
-				Water consumption shown in a linechart:
+				Water consumption in mL shown in a linechart:
 			</h1>
 			<div
 				style={{

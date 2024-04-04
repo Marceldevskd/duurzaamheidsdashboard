@@ -5,6 +5,7 @@ import Header from "../components/header";
 import Slideshow from "../components/slideshow";
 import LineChart from "../components/LineChart";
 import Timer from "../components/Timer";
+import API from "../components/api";
 
 const Home: React.FC = () => {
   return (
@@ -25,9 +26,7 @@ const Home: React.FC = () => {
             <div className={styles.getal}>
               <div className={styles.square}></div>
               {/* siem zijn code */}
-              <div className={styles.waterverbruik_zin}>
-                Waterverbruik van de kraan op het ICT instituutsplein:
-              </div>
+              <API />
             </div>
             <div className={styles.Waterverbruik}>
               <div className={styles.getal_liter}>

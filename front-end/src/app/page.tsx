@@ -3,7 +3,8 @@ import styles from "./page.module.css";
 import Component from "../components/component";
 import React from "react";
 import LineChart from "../components/LineChart";
-import Timer from "../components/Timer";
+import api  from "../components/api";
+
 
 const Home: React.FC = () => {
   return (
@@ -22,10 +23,9 @@ const Home: React.FC = () => {
         </div>
         <div className={styles.getal_liter}>
           <div className={styles.waterverbruik_getal}>
-            56
-            {/* <Timer />  */}
+          {api()}
           </div>
-          <div className={styles.Liter}>L</div>
+          {/* <div className={styles.Liter}>mL</div> */}
         </div>
       </div>
       {LineChart()}

@@ -2,124 +2,125 @@
 
 openapi: 3.0.0
 info:
-  title: Duurzaamheidsdashboard API docs
-  description: De API endpoints documentatie voor het duurzaamheidsdashboard Blok CD
+  title: Backend API Documentation
   version: 1.0.0
 paths:
-  /get-readings:
-    get:
-      summary: Retrieve sensor readings
-      parameters:
-        - in: query
-          name: sensorName
-          schema:
-            type: string
-          description: Name of the sensor (optional)
-        - in: query
-          name: type
-          schema:
-            type: string
-          description: Type of sensors to filter by (optional)
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Reading'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-        '500':
-          description: Internal server Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-      security: [] # Add security schemes if needed
-  /light-advice:
+  /add-sensor:
     post:
-      summary: Get the readings of the lights that 
+      summary: Register extra sensors and create a document in the database
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: 
-                - companyID
-                - location
               properties:
-                companyID: 
+                name:
                   type: string
-                  description: For security
-                location: 
+                  description: Descriptive name
+                type:
                   type: string
-                  description: makes it possible for a company to be able to have these sensors at more locations
-                advice:
-                  type: boolean
-                  description: Advice if the lights should be on or off
-                state: 
-                  type: boolean
-                  description: State of the lights
+                  description: Sensor type ("water", "electricity", etc.)
+                unit:
+                  type: string
+                  description: Sensor unit ("mL", "kW", etc.)
       responses:
         '200':
-          description: OK
+          description: Success
         '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
+          description: |
+            Invalid data received
+            Sensor already exists
         '500':
-          description: Internal server Error
+          description: Internal server error
+  /add-reading:
+    post:
+      summary: Add readings from sensors to the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sensorName:
+                  type: string
+                  description: Name of the sensor
+                amount:
+                  type: number
+                  description: Reading using the default unit of the sensor
+                time:
+                  type: number
+                  description: Unix timestamp (optional)
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: |
+            Invalid data received
+            Invalid sensor name
+        '500':
+          description: Internal server error
+  /get-readings:
+    get:
+      summary: Retrieve all readings from the sensor(s) by sensor name or sensor type
+      parameters:
+        - name: sensorName
+          in: query
+          schema:
+            type: string
+          description: Name of the sensor for readings
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: The type of sensor for readings
+      responses:
+        '200':
+          description: Success
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-      security: [] # Add security schemes if needed  
-components:
-  schemas:
-    Reading:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date-time
-          description: Date and time of the reading
-        totalAmount:
-          type: number
-          description: Total amount measured
-        sensorReadings:
-          type: array
-          items:
-            type: object
-            properties:
-              amount: 
-                type: number
-              time:
-                type: number
-        usagePerHour:
-          type: array
-          items:
-            type: object
-            properties:
-              amount:
-                type: number
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date-time
+                      description: Date of the readings
+                    totalAmount:
+                      type: number
+                      description: Total amount of readings
+                    sensorReadings:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          unixTime:
+                            type: number
+                            description: Unix timestamp of the reading
+                          amount:
+                            type: number
+                            description: Amount of the reading
+                          _id:
+                            type: string
+                            description: Unique identifier of the reading
+                    usagePerHour:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          amount:
+                            type: number
+                            description: Amount of reading per hour
+                          _id:
+                            type: string
+                            description: Unique identifier of the hourly reading
+        '400':
+          description: |
+            Invalid data received
+            Invalid sensor name
+            Invalid sensor type
+        '500':
+          description: Internal server error

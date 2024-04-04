@@ -1,13 +1,13 @@
 .slideContainer {
   display: flex;
-  width: 200%;
+  width: 100%;
   animation: slideAnimation 10s infinite;
   overflow: hidden;
 }
 
 .slide {
   flex: 0 0 50%;
-  margin-left: 150px;
+  margin-left: 250px;
 }
 
 .imageContainer {

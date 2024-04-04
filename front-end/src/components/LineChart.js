@@ -115,7 +115,6 @@ function LineChart() {
 					width: "800px",
 					height: "350px",
 					padding: "20px",
-					marginLeft: "100px",
 					cursor: "pointer",
 				}}
 			>

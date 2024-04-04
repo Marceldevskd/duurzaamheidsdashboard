@@ -16,11 +16,6 @@ const Home: React.FC = () => {
             <img src="\Images\hu-logo.png" alt="HU" className={styles.img_hu}/>
           </div>
         </div>
-        {/* siem zijn code */}
-        <div className={styles.waterverbruik_zin}>
-          Waterverbruik van de kraan op het ICT instituutsplein:
-        </div>
-
           <div className={styles.column_head}>
             <div>
               <Header />

@@ -4,8 +4,8 @@ import React from "react";
 import Header from "../components/header";
 import Slideshow from "../components/slideshow";
 import LineChart from "../components/LineChart";
-// import Timer from "../components/Timer";
 import API from "../components/api";
+import BarChart from "@/components/BarChart";
 
 const Home: React.FC = () => {
   return (
@@ -25,7 +25,8 @@ const Home: React.FC = () => {
             {/* siem zijn code */}
             <API />
             <div className={styles.Waterverbruik}></div>
-            {LineChart()}
+            {/* {LineChart()} */}
+            <BarChart/>
           </div>
 
           <div className={styles.column_slides}>

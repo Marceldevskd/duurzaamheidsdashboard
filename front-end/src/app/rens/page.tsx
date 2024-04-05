@@ -1,5 +1,4 @@
 import styles from "@/app/page.module.css";
-import Component from "@/components/component"
 import React from "react"; 
 import BarChart from "@/components/BarChart"
 import ApiComponent from "@/components/api"

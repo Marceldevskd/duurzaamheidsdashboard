@@ -4,7 +4,7 @@ import React from "react";
 import Header from "../components/header";
 import Slideshow from "../components/slideshow";
 import LineChart from "../components/LineChart";
-import API from "../components/api";
+// import API from "../components/api";
 import BarChart from "@/components/BarChart";
 
 const Home: React.FC = () => {
@@ -23,10 +23,10 @@ const Home: React.FC = () => {
 
           <div className={styles.column_content}>
             {/* siem zijn code */}
-            <API />
+            {/* <API /> */}
             <div className={styles.Waterverbruik}></div>
             {/* {LineChart()} */}
-            <BarChart/>
+            <BarChart />
           </div>
 
           <div className={styles.column_slides}>

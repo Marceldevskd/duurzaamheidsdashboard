@@ -1,103 +1,83 @@
-import { useState, useEffect } from 'react';
-import styles from '../app/page.module.css';
+import { useState, useEffect } from "react";
+import styles from "../app/page.module.css";
 
-const API: React.FC = () => {
-    const [amount, setAmount] = useState(null);
-    const [error, setError] = useState(null);
+// const API: React.FC = () => {
+//     const [amount, setAmount] = useState(null);
+//     const [error, setError] = useState(null);
 
-    async function callAPI() {
-        try {
-            const res = await fetch(
-                `http://localhost:4000/get-readings?sensorName=Water-1`,
-                {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        "Access-Control-Allow-Origin": "http://localhost:3000"
-                    },
-                }
-            );
-            const data = await res.json();
-            setError(null);
-            return data;
-        } catch (err) {
-            console.error("Error fetching data:", err);
-            throw new Error("Error fetching data. Please try again later.");
-        }
-    };
+//     async function callAPI() {
+//         try {
+//             const res = await fetch(
+//                 `http://localhost:4000/get-readings?sensorName=Water-1`,
+//                 {
+//                     method: 'GET',
+//                     headers: {
+//                         'Content-Type': 'application/json',
+//                         "Access-Control-Allow-Origin": "http://localhost:3000"
+//                     },
+//                 }
+//             );
+//             const data = await res.json();
+//             setError(null);
+//             return data;
+//         } catch (err) {
+//             console.error("Error fetching data:", err);
+//             throw new Error("Error fetching data. Please try again later.");
+//         }
+//     };
 
-    function destructurer(data: any) {
-        const currentDate = new Date();
-        currentDate.setUTCHours(-1, 0, 0, 0); // Set current date to midnight (UTC+0)
+//     function destructurer(data: any) {
+//         const currentDate = new Date();
+//         currentDate.setUTCHours(-1, 0, 0, 0); // Set current date to midnight (UTC+0)
 
-        const dataToday = data[data.length - 1];
-        let todayTotalAmount;
+//         const dataToday = data[data.length - 1];
+//         let todayTotalAmount;
 
-        // Verwijder tijdzone-informatie uit dataToday.date
-        const dataTodayDate = dataToday.date.split('T')[0];
+//         // Verwijder tijdzone-informatie uit dataToday.date
+//         const dataTodayDate = dataToday.date.split('T')[0];
 
-        console.log("Data datum:", dataTodayDate, "Huidige datum:", currentDate.toISOString().split('T')[0]);
+//         console.log("Data datum:", dataTodayDate, "Huidige datum:", currentDate.toISOString().split('T')[0]);
 
-        if (dataTodayDate === currentDate.toISOString().split('T')[0]) {
-            todayTotalAmount = dataToday.totalAmount;
-        } else {
-            todayTotalAmount = 0;
-        }
-        setAmount(todayTotalAmount);
-    }
+//         if (dataTodayDate === currentDate.toISOString().split('T')[0]) {
+//             todayTotalAmount = dataToday.totalAmount;
+//         } else {
+//             todayTotalAmount = 0;
+//         }
+//         setAmount(todayTotalAmount);
+//     }
 
+//     useEffect(() => {
+//         const timerId = setInterval(async () => {
+//             const data = await callAPI();
+//             destructurer(data);
+//         }, 10000);
 
+//         return () => clearInterval(timerId);
+//     }, []);
 
-    useEffect(() => {
-        const timerId = setInterval(async () => {
-            const data = await callAPI();
-            destructurer(data);
-        }, 10000);
+//     useEffect(() => {
+//         const result = async () => {
+//             const data = await callAPI();
+//             destructurer(data);
+//         }
+//         result()
+//     }, []);
 
-        return () => clearInterval(timerId);
-    }, []);
+//     return (
+//         <>
+//             {error && <div className={styles.error}>{error}</div>}
+//             {amount && (
+//                 <div className={styles.amount}>
+//                     {amount}
+//                     {/* Weergave van de verkregen sensorgegevens */}
 
-    useEffect(() => {
-        const result = async () => {
-            const data = await callAPI();
-            destructurer(data);
-        }
-        result()
-    }, []);
+//                 </div>
+//             )}
+//         </>
+//     );
+// };
 
-    return (
-        <>
-            {error && <div className={styles.error}>{error}</div>}
-            {amount && (
-                <div className={styles.amount}>
-                    {amount}
-                    {/* Weergave van de verkregen sensorgegevens */}
-
-                </div>
-            )}
-        </>
-    );
-};
-
-export default API;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// export default API;
 
 // import { useState, useEffect } from 'react';
 // import styles from '../app/page.module.css';
@@ -146,4 +126,3 @@ export default API;
 //     )
 // }
 // export default API
-

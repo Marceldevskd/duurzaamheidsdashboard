@@ -124,3 +124,59 @@ paths:
             Invalid sensor type
         '500':
           description: Internal server error
+  /add-light-reading/lamps-on:
+    post:
+      summary: Set lamp state
+      description: Set the state of the lamp (on/off).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sensorName:
+                  type: string
+                  description: Name of the sensor.
+                reading:
+                  type: number
+                  enum: [0, 1]
+                  description: Lamp state (0 for off, 1 for on).
+      responses:
+        '200':
+          description: Lamp state updated successfully
+        '400':
+          description: |
+            Invalid data received
+            Invalid reading value
+            Invalid sensor name
+        '500':
+          description: Internal Server Error
+  /add-light-reading/sun-light:
+    post:
+      summary: Set lamp state
+      description: Set the state of the lamp (on/off).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sensorName:
+                  type: string
+                  description: Name of the sensor.
+                reading:
+                  type: number
+                  enum: [0, 1]
+                  description: Lamp state (0 for off, 1 for on).
+      responses:
+        '200':
+          description: Lamp state updated successfully
+        '400':
+          description: |
+            Invalid data received
+            Invalid reading value
+            Invalid sensor name
+        '500':
+          description: Internal Server Error

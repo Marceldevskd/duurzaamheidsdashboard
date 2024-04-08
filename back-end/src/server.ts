@@ -3,16 +3,16 @@ import mongoose from "mongoose";
 import addReading from "./routes/add-reading";
 import addSensor from "./routes/add-sensor";
 import getReadings from "./routes/get-readings";
-import lampLight from "./routes/add-light-reading/lamp-light"
-import sunLight from "./routes/add-light-reading/sun-light"
+import lampLight from "./routes/add-light-reading/lamp-light";
+import sunLight from "./routes/add-light-reading/sun-light";
 import middleware from "./middleware/middleware";
-import cors from 'cors';
+import cors from "cors";
 
 // Connect to MongoDB
 mongoose
-	.connect("mongodb://localhost:27017/")
-	.then(() => console.log("Connected to MongoDB"))
-	.catch((err) => console.error("Error connecting to MongoDB:", err));
+  .connect("mongodb://127.0.0.1:27017/")
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("Error connecting to MongoDB:", err));
 
 // Express.js app
 const app = express();

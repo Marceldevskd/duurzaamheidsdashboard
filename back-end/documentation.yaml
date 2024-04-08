@@ -1,0 +1,126 @@
+# open this in https://editor.swagger.io/ to see the documentation in a more readable way
+
+openapi: 3.0.0
+info:
+  title: Backend API Documentation
+  version: 1.0.0
+paths:
+  /add-sensor:
+    post:
+      summary: Register extra sensors and create a document in the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Descriptive name
+                type:
+                  type: string
+                  description: Sensor type ("water", "electricity", etc.)
+                unit:
+                  type: string
+                  description: Sensor unit ("mL", "kW", etc.)
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: |
+            Invalid data received
+            Sensor already exists
+        '500':
+          description: Internal server error
+  /add-reading:
+    post:
+      summary: Add readings from sensors to the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sensorName:
+                  type: string
+                  description: Name of the sensor
+                amount:
+                  type: number
+                  description: Reading using the default unit of the sensor
+                time:
+                  type: number
+                  description: Unix timestamp (optional)
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: |
+            Invalid data received
+            Invalid sensor name
+        '500':
+          description: Internal server error
+  /get-readings:
+    get:
+      summary: Retrieve all readings from the sensor(s) by sensor name or sensor type
+      parameters:
+        - name: sensorName
+          in: query
+          schema:
+            type: string
+          description: Name of the sensor for readings
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: The type of sensor for readings
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date-time
+                      description: Date of the readings
+                    totalAmount:
+                      type: number
+                      description: Total amount of readings
+                    sensorReadings:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          unixTime:
+                            type: number
+                            description: Unix timestamp of the reading
+                          amount:
+                            type: number
+                            description: Amount of the reading
+                          _id:
+                            type: string
+                            description: Unique identifier of the reading
+                    usagePerHour:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          amount:
+                            type: number
+                            description: Amount of reading per hour
+                          _id:
+                            type: string
+                            description: Unique identifier of the hourly reading
+        '400':
+          description: |
+            Invalid data received
+            Invalid sensor name
+            Invalid sensor type
+        '500':
+          description: Internal server error

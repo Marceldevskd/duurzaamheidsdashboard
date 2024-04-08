@@ -10,6 +10,7 @@ app.get('/', async (req: Request, res: Response) => {
 			sensorName: req.query.sensorName as string,
 			type: req.query.type as string
 		};
+		console.log('Data:', data)
 
 		if (!data.sensorName && !data.type) {
 			return res.status(400).json({ error: 'Invalid data received' });
@@ -22,7 +23,6 @@ app.get('/', async (req: Request, res: Response) => {
 			if (!sensor) {
 				return res.status(400).json({ error: 'Invalid sensor name' });
 			}
-
 			res.status(200).json(sensor.readings);
 			return;
 		} 
@@ -31,7 +31,7 @@ app.get('/', async (req: Request, res: Response) => {
 		const sensors = await Sensors.find({ type: data.type });
 
 		if (!sensors) {
-			return res.status(400).json({ error: 'Invalid sensor name' });
+			return res.status(400).json({ error: 'Invalid sensor type' });
 		}
 
 		let readings: Array<ReadingProps> = [];

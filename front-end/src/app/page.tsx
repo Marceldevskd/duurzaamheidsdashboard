@@ -22,7 +22,6 @@ const Home: React.FC = () => {
               <Header />
             </div>
           </div>
-
           <div className={styles.column_content}>
             {/* siem zijn code */}
             {/* <API /> */}
@@ -38,14 +37,9 @@ const Home: React.FC = () => {
           </div>
         </div>
         {/* rens zijn code  */}
-        <div id="lamp component">
+      <div id="lamp component">
           {Licht()}
         </div>
-        {/* siem zijn code */}
-        {/* <div className={styles.waterverbruik_zin}>
-          Waterverbruik van de kraan op het ICT instituutsplein:
-        </div> */}
-      
       <div className={styles.Waterverbruik}>
         <div className={styles.getal_liter}>
           {/* <div className={styles.waterverbruik_getal}>
@@ -55,17 +49,9 @@ const Home: React.FC = () => {
             L
           </div> */}
         </div>
-        
       </div>
-      {LineChart()}
-      {/* Add more content here */}
-      <div className={styles.slideshowContainer}> 
-        <Slideshow />
-      </div>
-      
     </main>
     </body>
-      
   );
 };
 export default Home;

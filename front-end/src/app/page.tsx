@@ -5,6 +5,7 @@ import Component from "../components/component";
 import React from "react";
 import LineChart from "../components/LineChart";
 import Timer from "../components/Timer";
+import Licht from "../components/Licht";
 
 const Home: React.FC = () => {
   return (
@@ -15,27 +16,34 @@ const Home: React.FC = () => {
             <h1> Duurzaamheidsdashboard </h1>
           </div>
         </div>
-        {/* siem zijn code */}
-        <div className={styles.waterverbruik_zin}>
-          Waterverbruik van de kraan op het ICT instituutsplein:
+        {/* rens zijn code  */}
+        <div id="lamp component">
+          {Licht()}
         </div>
+        {/* siem zijn code */}
+        {/* <div className={styles.waterverbruik_zin}>
+          Waterverbruik van de kraan op het ICT instituutsplein:
+        </div> */}
       </div>
       <div className={styles.Waterverbruik}>
         <div className={styles.getal_liter}>
-          <div className={styles.waterverbruik_getal}>
+          {/* <div className={styles.waterverbruik_getal}>
             56
-          </div>
-          <div className={styles.Liter}>
+          </div> */}
+          {/* <div className={styles.Liter}>
             L
-          </div>
+          </div> */}
         </div>
+        
       </div>
       {LineChart()}
       {/* Add more content here */}
       <div className={styles.slideshowContainer}> 
         <Slideshow />
       </div>
+      
     </main>
+    
   );
 };
 export default Home

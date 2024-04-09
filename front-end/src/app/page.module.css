@@ -60,3 +60,22 @@
 .title{
   padding-left: 20px;
 }
+
+.lampContainer{
+  display: flex;
+position: absolute;
+bottom: 0;
+left: 0;
+}
+
+.lampComponent{
+color: blue;
+
+}
+
+.lampMessage{
+  color:blue;
+margin-left: 25px;
+
+
+}

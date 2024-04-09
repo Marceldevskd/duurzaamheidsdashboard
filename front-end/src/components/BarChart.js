@@ -6,6 +6,7 @@ import styles from '../components/BarChart.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+
 export default function BarChart() {
 
 
@@ -13,10 +14,10 @@ export default function BarChart() {
     labels: ['mon', 'tue', 'wed', 'thur', 'fri'],
     datasets: [
       {
-        label: 'waterverbruik',
-        data: [100, 500, 1000, 1500, 2000],
+        label: 'waterverbruik in mililiter',
+        data: [633, 2000, 1000, 1500, 5000],
         borderColor: 'lightblue',
-        backgroundColor: 'red'
+        backgroundColor: 'blue'
       }
     ]
   });
@@ -57,10 +58,11 @@ export default function BarChart() {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{ width: '600px', height: '300px' }}>
       <Bar data={chartData} options={chartOptions} />
     </div>
   );
+  
 }
 
 

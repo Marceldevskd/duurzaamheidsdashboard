@@ -32,6 +32,7 @@ const Home:React.FC = () => {
       <BarChart />
       </div>
       
+
       {/* <ApiComponent/> */}
       
     </main>

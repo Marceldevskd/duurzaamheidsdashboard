@@ -7,23 +7,6 @@
   padding-left: 20px;
 }
 
-.lampContainer{
-  display: flex;
-position: absolute;
-bottom: 0;
-left: 0;
-}
-
-.lampComponent{
-color: blue;
-
-}
-
-.lampMessage{
-  color:blue;
-margin-left: 25px;
-
-
 .column_hu {
   margin: 5px 0;
 }
@@ -55,4 +38,19 @@ margin-left: 25px;
   font-size: 50px;
   margin-right: 400px;
 }
+
+.lampContainer{
+  display: flex;
+position: absolute;
+bottom: 0;
+left: 0;
+}
+
+.lampComponent{
+color: blue;
+}
+
+.lampMessage{
+  color:blue;
+margin-left: 25px;
 }

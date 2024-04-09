@@ -1,0 +1,32 @@
+.toggleButton {
+  border: 3px solid white;
+  border-radius: 30px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.buttonContent {
+  display: flex;
+  align-items: center;
+  width: 115px;
+}
+
+.lightsOn {
+  background-color: #3cb371;
+  color: #fff;
+}
+
+.lightsOff {
+  background-color: #ff6347;
+  color: #fff;
+}
+
+.text {
+  font-size: 100%;
+  margin-left: 4px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+  }

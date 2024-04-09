@@ -5,6 +5,15 @@ export interface SensorProps extends Document {
 	type: string;
 	unit: string;
 	readings: ReadingProps[];
+	lightReadings?: LightReadingProps;
+}
+
+export interface LightReadingProps {
+	totalTime: number; // since April 9th 2024
+	timer: number; // in seconds
+	lastUpdateUnix: number; // last update in unix Ms
+	sunShines: boolean; // if the sun is shining
+	lightsOn: boolean; // if the lights are on
 }
 
 export interface ReadingProps {
@@ -39,11 +48,23 @@ const ReadingSchema: Schema<ReadingProps> = new Schema({
 	usagePerHour: [UsagePerHourSchema]
 });
 
+const LightReadingSchema: Schema<LightReadingProps> = new Schema({
+	totalTime: Number,
+	timer: Number,
+	lastUpdateUnix: Number,
+	sunShines: Boolean,
+	lightsOn: Boolean
+});
+
 const SensorsSchema: Schema<SensorProps> = new Schema({
 	name: String,
 	type: String,
 	unit: String,
-	readings: [ReadingSchema]
+	readings: [ReadingSchema],
+	lightReadings: {
+		type: LightReadingSchema,
+		default: undefined
+	}
 });
 
 const Sensors = mongoose.model<SensorProps>('Sensors', SensorsSchema);

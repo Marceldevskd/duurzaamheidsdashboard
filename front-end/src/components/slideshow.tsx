@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import styles from './slideshow.module.css';
+import React, { useEffect, useState } from "react";
+import styles from "./slideshow.module.css";
 
 const Slideshow: React.FC = () => {
   const [slideIndex, setSlideIndex] = useState(0);
-  // text below the sdg image
   const slideTexts = [
     "Beëindig armoede overal en in al haar vormen",
     "Beëindig honger, bereik voedselzekerheid en verbeterde voeding en promoot duurzame landbouw",
@@ -21,36 +20,50 @@ const Slideshow: React.FC = () => {
     "Behoud en maak duurzaam gebruik van oceanen, zeeën en maritieme hulpbronnen",
     "Bescherm, herstel en bevorder het duurzaam gebruik van ecosystemen op het vasteland, beheer bossen en wouden duurzaam, bestrijd woestijnvorming, stop landdegradatie en draai het terug en roep het verlies aan biodiversiteit een halt toe",
     "Bevorder vreedzame en inclusieve samenlevingen met het oog op duurzame ontwikkeling, verzeker toegang tot justitie voor iedereen en bouw op alle niveaus doeltreffende, verantwoordelijke en toegankelijke instellingen uit",
-    "Versterk de implementatiemiddelen en revitaliseer het wereldwijd partnerschap voor duurzame ontwikkeling"
+    "Versterk de implementatiemiddelen en revitaliseer het wereldwijd partnerschap voor duurzame ontwikkeling",
   ];
 
   useEffect(() => {
     const carousel = setInterval(() => {
-      setSlideIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+      setSlideIndex((prevIndex) => (prevIndex + 1) % slideTexts.length);
     }, 5000);
 
     return () => clearInterval(carousel);
   }, []);
 
-  const totalSlides = 17; // Total number of slides
-
   return (
     <div className={`${styles.sdg_slideshow} ${styles.max_width}`}>
-      <div className={styles.title}>Sustainable Development Goals</div>
-      {[...Array(totalSlides)].map((_, index) => (
-        <div key={index}>
-          {/* image link to sdg website */}
-          <a href="https://www.sdgnederland.nl/de-17-sdgs/" target="_blank" rel="noopener noreferrer">
-            <img
-              className={`${styles.mySlides} ${slideIndex === index ? styles.display_block : ''}`}
-              src={`Images/SDG_${index + 1}.png`}
-              style={{ width: '100%' }}
-              alt={`Slide ${index + 1}`}
-            />
-          </a>
-          {slideIndex === index && <div className={styles.slideText}>{slideTexts[index]}</div>}
+      <div className={styles.slidesContainer}>
+        <div className={styles.slideContainer}>
+          {[0, 1].map((offset) => {
+            const index = (slideIndex + offset) % slideTexts.length;
+            return (
+              <div
+                key={index}
+                className={styles.slide}
+                style={{
+                  transform: `translateX(${offset * -50}%)`,
+                }}
+              >
+                <a
+                  href="https://www.sdgnederland.nl/de-17-sdgs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className={styles.imageContainer}>
+                    <img
+                      className={`${styles.mySlides}`}
+                      src={`Images/SDG's/SDG_${index + 1}.png`}
+                      alt={`Slide ${index + 1}`}
+                    />
+                    <div className={styles.slideText}>{slideTexts[index]}</div>
+                  </div>
+                </a>
+              </div>
+            );
+          })}
         </div>
-      ))}
+      </div>
     </div>
   );
 };

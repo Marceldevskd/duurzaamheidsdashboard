@@ -1,44 +1,33 @@
-.sdg_slideshow {
-    display: flex;
-    flex-direction: column;
-    border: 5px solid #f5f2f5;
-    border-radius: 20px;
-    background-color: #c8dea5fa;
-    padding: 10px;
-    overflow: hidden;
+.slideContainer {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
 }
 
-.max_width {
-    max-width: 300px;
-    min-width: 300px;
-    /* Adjust width as needed */
+.slide {
+  flex: 0 0 50%;
+  margin-left: 250px;
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
 }
 
 .mySlides {
-    display: none;
-    border: solid 3px white;
-    border-radius: 10px;
-}
-
-/* image display */
-.display_block {
-    display: block;
-}
-
-.title {
-    font-size: 18px;
-    margin-bottom: 10px;
+  border: solid 3px white;
+  border-radius: 10px;
+  max-width: 200px;
 }
 
 .slideText {
-    height: 100px; /* Set a fixed height for the slide text */
-    overflow: auto; /* Add overflow property to enable scrolling if text exceeds height */
-    margin-top: 10px;
-    border: solid 3px white;
-    border-radius: 10px;
-    background-color: grey;
-    text-align: center;
-    padding: 5px;
-    font-size: 15px;
+  overflow: auto;
+  margin-left: 10px;
+  border: solid 3px white;
+  border-radius: 10px;
+  background-color: var(--clr-hu-notif-grad);
+  padding: 5px;
+  font-size: 15px;
+  width: 200px;
+  text-align: center;
 }
-

@@ -1,6 +1,5 @@
-"use client";
-import { Line } from "react-chartjs-2";
-import { styles } from "../app/page.module.css";
+import { Line } from 'react-chartjs-2';
+import styles from "../components/linechart.module.css";
 
 import {
 	Chart as ChartJS,
@@ -45,7 +44,7 @@ function LineChart() {
 				pointBorderWidth: 3,
 				tension: 0.5,
 				fill: true,
-				backgroundColor: (context) => {
+				backgroundColor: (context: any) => {
 					const ctx = context.chart.ctx;
 					const gradient = ctx.createLinearGradient(0, 0, 0, 300);
 					gradient.addColorStop(0, "lightblue");
@@ -58,7 +57,15 @@ function LineChart() {
 
 	const options = {
 		plugins: {
-			legend: true,
+			legend: {
+				display: true,
+				labels: {
+					font: {
+						size: 12,
+						weight: 'bold' as 'bold'
+					}
+				}
+			}
 		},
 		responsive: true,
 		scales: {
@@ -66,12 +73,11 @@ function LineChart() {
 				ticks: {
 					font: {
 						size: 17,
-						weight: "bold",
+						weight: 'bold' as 'bold'
 					},
 				},
 				title: {
 					display: true,
-					text: "Water consumption in mL",
 					padding: {
 						bottom: 10,
 					},
@@ -87,12 +93,11 @@ function LineChart() {
 				ticks: {
 					font: {
 						size: 17,
-						weight: "bold",
+						weight: 'bold' as 'bold'
 					},
 				},
 				title: {
 					display: true,
-					text: "Day",
 					padding: {
 						top: 10,
 					},
@@ -104,21 +109,14 @@ function LineChart() {
 			},
 		},
 	};
+		
 
 	return (
-		<div>
-			<h1>
-				Water consumption shown in a linechart:
+		<div className={styles.chartGroup}>
+			<h1 className={styles.chartText}>
+				Water consumption in ml shown in a linechart:
 			</h1>
-			<div
-				style={{
-					width: "800px",
-					height: "350px",
-					padding: "20px",
-					marginLeft: "100px",
-					cursor: "pointer",
-				}}
-			>
+			<div className={styles.chart}>
 				<Line data={data} options={options}></Line>
 			</div>
 		</div>

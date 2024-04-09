@@ -58,7 +58,7 @@ export default function BarChart() {
   }, []);
 
   return (
-    <div className={styles.container} style={{ width: '600px', height: '300px' }}>
+    <div className={styles.container} style={{ width: '600px', height: '250px' }}>
       <Bar data={chartData} options={chartOptions} />
     </div>
   );

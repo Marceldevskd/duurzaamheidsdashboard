@@ -1,6 +1,6 @@
 .header {
   position: relative;
-  height: 150px;
+  height: 100px;
 }
 
 .overlay {
@@ -21,7 +21,7 @@
 
 .text {
   position: absolute;
-  top: 40%;
+  top: 30%;
   padding-left: 10px;
   color: var(--clr-hu-primary);
   z-index: 1; /* text infront of the image */

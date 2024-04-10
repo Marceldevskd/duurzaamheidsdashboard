@@ -23,6 +23,12 @@ const Home: React.FC = () => {
         </div>
         <BarChart />
       </div>
+      <div className={styles.Liter}>
+        L
+      </div>
+      <BarChart />
+      
+      
 
       {/* <ApiComponent/> */}
     </main>

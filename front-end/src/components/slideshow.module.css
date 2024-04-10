@@ -12,22 +12,23 @@
 .imageContainer {
   display: flex;
   align-items: center;
+  margin: 10px;
 }
 
 .mySlides {
-  border: solid 3px white;
+  border: solid 3px var(--clr-hu-notif);
   border-radius: 10px;
-  max-width: 200px;
+  max-width: 160px;
 }
 
 .slideText {
   overflow: auto;
   margin-left: 10px;
-  border: solid 3px white;
+  border: solid 3px var(--clr-hu-notif);
   border-radius: 10px;
   background-color: var(--clr-hu-notif-grad);
   padding: 5px;
   font-size: 15px;
-  width: 200px;
+  width: 300px;
   text-align: center;
 }

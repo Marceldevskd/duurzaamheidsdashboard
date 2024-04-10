@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+.title{
+  padding-left: 20px;
+}
+
 .column_hu {
   margin: 5px 0;
 }
@@ -19,18 +23,50 @@
 .column_content {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
+}
+
+.waterverbruik_vak {
+  margin: 100px;
+  padding: 20px;
+  border: 3px solid var(--clr-hu-blue-grad-dark);
+  border-radius: 5px;
+}
+
+/* duwt het lichten vak naar rechts */
+.rightContainer { 
+  margin-left: auto;
+}
+
+.lightAdvice_vak {
+  margin-right: 100px;
 }
 
 .column_slides {
   position: absolute;
   bottom: 0;
   width: 100%;
+  border-top: 3px solid var(--clr-hu-blue-grad-dark);
   background-color: var(--clr-hu-primary);
 }
 
 .amount{
   font-size: 50px;
   margin-right: 400px;
+}
+
+.lampContainer{
+  display: flex;
+position: absolute;
+/* bottom: 0; */
+left: 0;
+}
+
+.lampComponent{
+color: blue;
+}
+
+.lampMessage{
+  color:blue;
+margin-left: 25px;
 }

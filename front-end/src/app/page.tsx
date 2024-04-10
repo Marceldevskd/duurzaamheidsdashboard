@@ -6,7 +6,7 @@ import Slideshow from "../components/slideshow";
 import LineChart from "../components/LineChart";
 import Timer from "../components/Timer";
 import Licht from "../components/Licht";
-// import API from "../components/api";
+import API from "../components/api";
 import BarChart from "@/components/BarChart";
 import ToggleButton from "@/components/lightAdvice";
 
@@ -23,30 +23,30 @@ const Home: React.FC = () => {
               <Header />
             </div>
           </div>
-
-          <div className={styles.column_content}>
-            {/* siem zijn code */}
-            {/* <API /> */}
-            <div className={styles.waterverbruik_vak}>
-              {/* {LineChart()} */}
-              <BarChart />
-            </div>
-
-            <div className={styles.rightContainer}>
-              <div className={styles.lightAdvice_vak}>
-                <ToggleButton />
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.column_slides}>
-            <div className={styles.slideshowContainer}>
-              <Slideshow />
-            </div>
-          </div>
-          {/* rens zijn code  */}
-          <div id="lamp component">{Licht()}</div>
         </div>
+
+        <div className={styles.column_content}>
+          {/* siem zijn code */}
+          {/* <API /> */}
+          <div className={styles.waterverbruik_vak}>
+            {/* {LineChart()} */}
+            <BarChart />
+          </div>
+
+          <div className={styles.rightContainer}>
+            <div className={styles.lightAdvice_vak}>
+              <ToggleButton />
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.column_slides}>
+          <div className={styles.slideshowContainer}>
+            <Slideshow />
+          </div>
+        </div>
+        {/* rens zijn code  */}
+        <div id="lamp component">{Licht()}</div>
       </main>
     </body>
   );

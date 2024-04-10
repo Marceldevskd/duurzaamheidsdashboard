@@ -1,13 +1,13 @@
 :root {
   --clr-background: #f2f2f2;
-  --clr-hu-primary: #a4cd99;
+  --clr-hu-primary: rgb(164, 205, 153);
   --clr-hu-secondary: #00004d;
   --clr-hu-red: #e6302b;
-  --clr-hu-hover-red: #cd1712;
+  --clr-hu-red-hover: #cd1712;
   --clr-hu-blue: #00a1e1;
-  --clr-hu-hover-blue: #0088c8;
-  --clr-hu-grad-blue-dark: #006eae;
-  --clr-hu-grad-blue-light: #d9f1fb;
+  --clr-hu-blue-hover: #0088c8;
+  --clr-hu-blue-grad-dark: #006eae;
+  --clr-hu-blue-grad-light: #d9f1fb;
   --clr-hu-notif: #f8ce1c;
   --clr-hu-notif-grad: #fdf5d1;
 }

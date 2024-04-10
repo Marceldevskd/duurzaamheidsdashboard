@@ -27,13 +27,15 @@ const Home: React.FC = () => {
           <div className={styles.column_content}>
             {/* siem zijn code */}
             {/* <API /> */}
-            <div className={styles.Waterverbruik}></div>
-            {/* {LineChart()} */}
-            <BarChart />
+            <div className={styles.waterverbruik_vak}>
+              {/* {LineChart()} */}
+              <BarChart />
+            </div>
 
-            <div className={styles.lightAdviceButton}>
-              <h1>Lampen advies knop</h1>
-              <ToggleButton />
+            <div className={styles.rightContainer}>
+              <div className={styles.lightAdvice_vak}>
+                <ToggleButton />
+              </div>
             </div>
           </div>
 

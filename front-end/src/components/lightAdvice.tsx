@@ -8,30 +8,38 @@ const ToggleButton: React.FC = () => {
 
   const toggle = () => {
     setIsToggled(!isToggled);
-    // logica voor het toggelen van knop gaat hier
+    // logic for toggling the button goes here
   };
 
   return (
-    <button
-      className={`${styles.toggleButton} ${
-        isToggled ? styles.lightsOff : styles.lightsOn
-      }`}
-      onClick={toggle}
-    >
-      <div className={styles.buttonContent}>
-        {isToggled ? (
-          <>
-            <LuLightbulbOff className={styles.icon} />
-            <span className={styles.text}>Lampen uit</span>
-          </>
-        ) : (
-          <>
-            <LuLightbulb className={styles.icon} />
-            <span className={styles.text}>Lampen aan</span>
-          </>
-        )}
+    <div className={styles.container}>
+        <h1 className={styles.heading}>Lampen advies</h1>
+      <div className={styles.buttonContainer}>
+        <button
+          className={`${styles.toggleButton} ${
+            isToggled ? styles.lightsOff : styles.lightsOn
+          }`}
+          onClick={toggle}
+        >
+          <div className={styles.buttonContent}>
+            {isToggled ? (
+              <>
+                <LuLightbulbOff className={styles.icon} />
+                <span className={styles.buttonText}>Lampen uit</span>
+              </>
+            ) : (
+              <>
+                <LuLightbulb className={styles.icon} />
+                <span className={styles.buttonText}>Lampen aan</span>
+              </>
+            )}
+          </div>
+        </button>
       </div>
-    </button>
+      <div className={styles.textContainer}>
+      <p className={styles.paragraph}>Vorige week zijn de lampen zolang onnodig aangeweest ... <br /> Dat is dan zoveel extra energie verbrijkt dan nodig was ...</p>
+      </div>
+    </div>
   );
 };
 

@@ -23,18 +23,30 @@
 .column_content {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
 }
 
-.lightAdviceButton {
-  margin: 20px;
+.waterverbruik_vak {
+  margin: 100px;
+  padding: 20px;
+  border: 3px solid var(--clr-hu-blue-grad-dark);
+  border-radius: 5px;
+}
+
+/* duwt het lichten vak naar rechts */
+.rightContainer { 
+  margin-left: auto;
+}
+
+.lightAdvice_vak {
+  margin-right: 100px;
 }
 
 .column_slides {
   position: absolute;
   bottom: 0;
   width: 100%;
+  border-top: 3px solid var(--clr-hu-blue-grad-dark);
   background-color: var(--clr-hu-primary);
 }
 

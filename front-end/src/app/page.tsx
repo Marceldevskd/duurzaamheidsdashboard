@@ -8,7 +8,7 @@ import Timer from "../components/Timer";
 import Licht from "../components/Licht";
 import API from "../components/api";
 import BarChart from "@/components/BarChart";
-import ToggleButton from "@/components/lightAdvice";
+import LightAdvice from "@/components/lightAdvice";
 
 const Home: React.FC = () => {
   return (
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
 
           <div className={styles.rightContainer}>
             <div className={styles.lightAdvice_vak}>
-              <ToggleButton />
+              <LightAdvice />
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import addSensor from "./routes/add-sensor";
 import getReadings from "./routes/get-readings";
 import lampLight from "./routes/add-light-reading/lamp-light";
 import sunLight from "./routes/add-light-reading/sun-light";
+import getLightReadings from "./routes/get-light-readings";
 import middleware from "./middleware/middleware";
 import cors from "cors";
 
@@ -24,6 +25,7 @@ app.use("/add-sensor", addSensor);
 app.use("/get-readings", getReadings);
 app.use("/add-light-reading/lamps-on", lampLight);
 app.use("/add-light-reading/sun-light", sunLight);
+app.use("/get-light-readings", getLightReadings);
 
 // Start the server
 const PORT = process.env.PORT || 4000;

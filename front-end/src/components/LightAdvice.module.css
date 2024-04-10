@@ -14,8 +14,10 @@
 }
 
 .buttonContainer {
-  margin: 10px; 
-}
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+ }
 
 .toggleButton {
   border: 3px solid white;
@@ -60,4 +62,9 @@
 .paragraph {
   margin: 5px;
   line-height: 1.4;
+}
+
+.title {
+  text-align: center;
+  margin: 10px;
 }

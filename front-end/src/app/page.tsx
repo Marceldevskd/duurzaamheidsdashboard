@@ -8,6 +8,7 @@ import Timer from "../components/Timer";
 import Licht from "../components/Licht";
 import API from "../components/api";
 import BarChart from "@/components/BarChart";
+import ToggleButton from "@/components/lightAdvice";
 
 const Home: React.FC = () => {
   return (
@@ -24,12 +25,18 @@ const Home: React.FC = () => {
           </div>
         </div>
           
+
           <div className={styles.column_content}>
             {/* siem zijn code */}
             <API />
             <div className={styles.Waterverbruik}></div>
             {/* {LineChart()} */}
             <BarChart />
+
+            <div className={styles.lightAdviceButton}>
+              <h1>Lampen advies knop</h1>
+              <ToggleButton />
+            </div>
           </div>
 
           <div className={styles.column_slides}>

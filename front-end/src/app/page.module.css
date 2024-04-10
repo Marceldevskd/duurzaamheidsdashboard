@@ -27,6 +27,10 @@
   align-items: center;
 }
 
+.lightAdviceButton {
+  margin: 20px;
+}
+
 .column_slides {
   position: absolute;
   bottom: 0;

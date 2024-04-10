@@ -10,7 +10,6 @@ app.get('/', async (req: Request, res: Response) => {
 			sensorName: req.query.sensorName as string,
 			type: req.query.type as string
 		};
-		console.log('Data:', data)
 
 		if (!data.sensorName && !data.type) {
 			return res.status(400).json({ error: 'Invalid data received' });

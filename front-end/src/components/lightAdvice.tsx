@@ -27,7 +27,7 @@ const LightAdvice: React.FC = () => {
 	async function callAPI() {
 		try {
 			const res = await fetch(
-				`http://localhost:4000/get-light-readings?sensorName=Lamp1`,
+				`https://duurzaam-dashboard.nl/api/get-light-readings?sensorName=Lamp1`,
 				{
 					method: 'GET',
 					headers: {
@@ -97,6 +97,7 @@ const LightAdvice: React.FC = () => {
 			<div className={styles.textContainer}>
 				<p className={styles.paragraph}>De afgelopen tijd zijn de lampen {clocks.totalTime} seconden onnodig aan geweest. {(!lightAdviceOn && lightsOn) && (<><br/> De lampen zijn nu al {clocks.timer} seconden onnodig aan.</>)}</p>
 			</div>
+			{error && <div className={styles.error}>{error}</div>}
 		</div>
 	);
 };

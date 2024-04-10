@@ -8,7 +8,7 @@ const API: React.FC = () => {
 	async function callAPI() {
 		try {
 			const res = await fetch(
-				`http://localhost:4000/get-readings?type=water`,
+				`https://duurzaam-dashboard.nl/api/get-readings?name=Water-C`,
 				{
 					method: 'GET',
 					headers: {

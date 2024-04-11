@@ -23,7 +23,7 @@ const lampContainer = () => {
         const lampenAan = true;
 
         if (lampenAan && genoegLicht) {
-            setMessage("Doe de lampen uit");
+            // setMessage("Doe de lampen uit");
         } else {
             setMessage("Niks doen");
         }
@@ -32,7 +32,7 @@ const lampContainer = () => {
     return (
         <div className={styles.lampContainer}>
             <h1 className={styles.lampComponent}>
-               Advies lampen:
+               {/* Advies lampen: */}
             </h1>
             <h1 className={styles.lampMessage}>{message}</h1>
       

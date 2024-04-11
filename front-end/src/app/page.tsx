@@ -4,7 +4,6 @@ import React from "react";
 import Header from "../components/header";
 import Slideshow from "../components/slideshow";
 import LineChart from "../components/LineChart";
-import Timer from "../components/Timer";
 import Licht from "../components/Licht";
 import API from "../components/api";
 import BarChart from "@/components/BarChart";

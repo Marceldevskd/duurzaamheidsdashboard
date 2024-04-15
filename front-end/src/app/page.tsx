@@ -5,7 +5,7 @@ import Header from "../components/header";
 import Slideshow from "../components/slideshow";
 import LineChart from "../components/LineChart";
 import Timer from "../components/Timer";
-import Licht from "../components/Licht";
+// import Licht from "../components/Licht";
 import API from "../components/api";
 import BarChart from "@/components/BarChart";
 import LightAdvice from "@/components/lightAdvice";
@@ -32,7 +32,7 @@ const Home: React.FC = () => {
             {/* {LineChart()} */}
             <BarChart />
           </div>
-
+          <API />
           <div className={styles.rightContainer}>
             <div className={styles.lightAdvice_vak}>
               <LightAdvice />
@@ -45,8 +45,9 @@ const Home: React.FC = () => {
             <Slideshow />
           </div>
         </div>
+
         {/* rens zijn code  */}
-        <div id="lamp component">{Licht()}</div>
+        {/* <div id="lamp component">{Licht()}</div> */}
       </main>
     </body>
   );

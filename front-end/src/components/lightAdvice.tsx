@@ -27,7 +27,7 @@ const LightAdvice: React.FC = () => {
   async function callAPI() {
     try {
       const res = await fetch(
-        `http://localhost:4000/get-light-readings?sensorName=Light-Roof`,
+        `http://localhost:4000/get-light-readings?sensorName=Licht-1`,
         {
           method: "GET",
           headers: {

@@ -28,12 +28,15 @@
 //     }
 //   }, []);
 
-//   return (
-//     <div className={styles.lampContainer}>
-//       <h1 className={styles.lampComponent}>Advies lampen:</h1>
-//       <h1 className={styles.lampMessage}>{message}</h1>
-//     </div>
-//   );
-// };
+    return (
+        <div className={styles.lampContainer}>
+            <h1 className={styles.lampComponent}>
+               Advies lampen:
+            </h1>
+            <h1 className={styles.lampMessage}>{message}</h1>
+      
+        </div>
+    );
+};
 
 // export default lampContainer;

@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import Sensors from '../models/sensorsModel';
-import { ReadingDataProps } from '../models/postModels';
-import { ReadingProps, SensorReadingsProps, UsagePerHourProps } from '../models/sensorsModel';
+import { ReadingDataProps } from '../types/addReadingTypes';
+import { ReadingProps, SensorReadingsProps, UsagePerHourProps } from '../types/sensorsTypes';
 
 const app = express.Router();
 

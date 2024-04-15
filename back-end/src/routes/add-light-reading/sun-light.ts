@@ -1,12 +1,14 @@
 import express, { Request, Response } from 'express';
 import Sensors from '../../models/sensorsModel';
-import { ReadingProps, SensorReadingsProps, UsagePerHourProps } from '../../models/sensorsModel';
+import { LightReadingProps, SensorProps} from '../../types/sensorsTypes';
+import { LightRequestBodyProps } from './types/types';
+import { Document } from 'mongodb';
 
 const app = express.Router();
 
 app.post('/', async (req: Request, res: Response) => {
 	try {
-		let { sensorName, reading } = req.body;
+		let { sensorName, reading }: LightRequestBodyProps = req.body;
 
 		if (!sensorName || reading == undefined || reading == null || typeof reading !== 'number' || typeof sensorName !== 'string') {
 			return res.status(400).json({ error: 'Invalid data received' });
@@ -16,32 +18,32 @@ app.post('/', async (req: Request, res: Response) => {
 			return res.status(400).json({ error: 'Invalid reading value' });
 		}
 
-		const sensor = await Sensors.findOne({ name: sensorName });
+		const sensor: SensorProps | null = await Sensors.findOne({ name: sensorName });
 		if (!sensor || sensor.type !== 'Light') {
 			return res.status(400).json({ error: 'Invalid sensor name' });
 		}
 
 		if (!sensor.lightReadings) {
-			sensor.lightReadings = { 
+			sensor.lightReadings = {
 				totalTime: 0,
 				timer: 0,
-				lastUpdateUnix: Date.now(), 
+				lastUpdateUnix: Date.now(),
 				sunShines: false,
 				lightsOn: false
-			};
+			} as LightReadingProps;
 		}
 
-		sensor.lightReadings.sunShines = reading === 1;
+		sensor.lightReadings.sunShines = (reading === 1) as boolean;
 
 		if (sensor.lightReadings.sunShines && sensor.lightReadings.lightsOn) {
-			sensor.lightReadings.timer = (Date.now() - sensor.lightReadings.lastUpdateUnix) / 1000;
+			sensor.lightReadings.timer += (Date.now() - sensor.lightReadings.lastUpdateUnix) / 1000;
 		} else {
 			sensor.lightReadings.totalTime += sensor.lightReadings.timer;
 			sensor.lightReadings.timer = 0;
 		}
 
 		sensor.lightReadings.lastUpdateUnix = Date.now();
-		await sensor.save();
+		await (sensor as Document).save();
 		return res.status(200).send('Reading added successfully');
 	} catch (err) {
 		console.error('Error adding data:', err);

@@ -1,6 +1,6 @@
 import express, {Request, Response} from 'express';
 import Sensors from '../models/sensorsModel';
-import { AddSensorProps } from '../models/postModels';
+import { AddSensorProps } from '../types/addSensorTypes';
 
 const app = express.Router();
 

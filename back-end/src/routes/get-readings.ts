@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
-import Sensors, { ReadingProps } from '../models/sensorsModel';
-import { GetReadingsProps } from '../models/getModels';
+import Sensors from '../models/sensorsModel';
+import { ReadingProps } from '../types/sensorsTypes';
+import { GetReadingsProps } from '../types/getReadingsTypes';
 
 const app = express.Router();
 
@@ -50,28 +51,28 @@ app.get('/', async (req: Request, res: Response) => {
 						totalAmount: 0,
 						sensorReadings: existingReading.sensorReadings,
 						usagePerHour: existingReading.usagePerHour
-					}
+					};
 					
 					readingCopy.totalAmount = existingReading.totalAmount + sensorReading.totalAmount;
 					readingCopy.sensorReadings.push(...sensorReading.sensorReadings);
 					
 					for (let i = 0; i < 24; i++) {
 						readingCopy.usagePerHour[i].amount += sensorReading.usagePerHour[i].amount;
-					}
+					};
 
 					readings[existingReadingI] = readingCopy as ReadingProps; 
 					continue; // goes to next sensor
-				} 
+				} ;
 				// if the date does not exist, it adds the sensorReading to the readings array
 				readings.push(sensorReading);	
-			}
-		}
+			};
+		};
 
 		res.status(200).json(readings as Array<ReadingProps>);
 	} catch (err) {
 		console.error('Error reading data:', err);
 		res.status(500).send('Internal Server Error');
-	}
+	};
 });
 
 export default app;

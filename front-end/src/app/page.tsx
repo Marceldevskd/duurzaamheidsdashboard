@@ -28,7 +28,7 @@ const Home: React.FC = () => {
           <div className={styles.waterverbruik_vak}>
             <WaterUsage />
           </div>
-
+          <API />
           <div className={styles.rightContainer}>
             <div className={styles.lightAdvice_vak}>
               {/* <LightAdvice /> */}
@@ -41,8 +41,9 @@ const Home: React.FC = () => {
             <Slideshow />
           </div>
         </div>
+
         {/* rens zijn code  */}
-        <div id="lamp component">{Licht()}</div>
+        {/* <div id="lamp component">{Licht()}</div> */}
       </main>
     </body>
   );

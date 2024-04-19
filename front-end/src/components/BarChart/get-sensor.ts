@@ -1,7 +1,7 @@
 async function callAPI() {
    try {
       const res = await fetch(
-         `http://localhost:4000/get-readings?type=water`,
+         `http://localhost:4000/get-readings?sensorName=Water-1`,
          {
             method: 'GET',
             headers: {

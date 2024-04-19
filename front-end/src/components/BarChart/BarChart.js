@@ -1,20 +1,18 @@
 // BarChart.tsx
-// BarChart.tsx
-
 import { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import styles from '../components/BarChart.css';
+import styles from './BarChart.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function BarChart({ data }) {
   const [chartData, setChartData] = useState({
-    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], // Default labels
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     datasets: [
       {
         label: 'Water usage in milliliters',
-        data: data,
+        data: [0, 0, 0, 0, 0, 0, 0],
         borderColor: 'lightblue',
         backgroundColor: 'blue'
       }
@@ -22,29 +20,20 @@ export default function BarChart({ data }) {
   });
 
   useEffect(() => {
-    setChartData(prevData => ({
-      ...prevData,
-      labels: getDayLabels()
-    }));
-  }, []);
-
-  const getDayLabels = () => {
-    const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ];
-    const today = new Date().getDay();
-    const labels = daysOfWeek.slice(today).concat(daysOfWeek.slice(0, today)); // Rotate days of the week based on current day
-    return labels;
-  };
-
-  useEffect(() => {
+    const todayNumber = new Date().getDay() - 1;
+    const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const todayIndex = todayNumber < 0 ? 6 : todayNumber; // Handle Sunday
+    const updatedData = [...chartData.datasets[0].data];
+    updatedData[todayIndex] = data;
     setChartData(prevData => ({
       ...prevData,
       datasets: [{
         ...prevData.datasets[0],
-        data: data
+        data: updatedData
       }]
     }));
+    console.log(updatedData);
   }, [data]);
-
   const chartOptions = {
     plugins: {
       legend: {
@@ -65,6 +54,9 @@ export default function BarChart({ data }) {
     </div>
   );
 }
+
+
+
 
 
 

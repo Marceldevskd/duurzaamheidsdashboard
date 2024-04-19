@@ -4,9 +4,9 @@ import React from "react";
 import Header from "../components/header";
 import Slideshow from "../components/slideshow";
 import LineChart from "../components/LineChart";
-import Licht from "../components/Licht";
+// import Licht from "../components/Licht";
 import LightAdvice from "@/components/lightAdvice";
-import WaterUsage from "../components/WaterUsage"
+import WaterUsage from "../components/BarChart/WaterUsage"
 
 const Home: React.FC = () => {
   return (
@@ -28,7 +28,6 @@ const Home: React.FC = () => {
           <div className={styles.waterverbruik_vak}>
             <WaterUsage />
           </div>
-          <API />
           <div className={styles.rightContainer}>
             <div className={styles.lightAdvice_vak}>
               {/* <LightAdvice /> */}

@@ -15,17 +15,12 @@ export interface LightReadingProps {
 }
 
 export interface ReadingProps {
-	date: Date;
+	date: string;
 	totalAmount: number;
 	sensorReadings: SensorReadingsProps[];
-	usagePerHour: UsagePerHourProps[];
 }
 
 export interface SensorReadingsProps extends Document {
 	unixTime: number;
-	amount: number;
-}
-
-export interface UsagePerHourProps extends Document {
 	amount: number;
 }

@@ -1,11 +1,10 @@
 "use client";
 import styles from "./page.module.css";
 import React from "react";
-import Header from "../components/header";
-import Slideshow from "../components/slideshow";
-import LineChart from "../components/LineChart";
+import Header from "../components/header/header";
+import Slideshow from "../components/slideshow/slideshow";
 // import Licht from "../components/Licht";
-import LightAdvice from "@/components/lightAdvice";
+import LightAdvice from "@/components/licht-advies/lightAdvice";
 import WaterUsage from "../components/BarChart/WaterUsage"
 
 const Home: React.FC = () => {

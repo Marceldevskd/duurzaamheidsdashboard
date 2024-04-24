@@ -70,3 +70,24 @@ color: blue;
   color:blue;
 margin-left: 25px;
 }
+
+.Container_Infographics{
+  position: relative; /* Ensure relative positioning for absolute positioning of children */
+  width: 100%; /* Adjust as needed */
+  height: 100vh; /* Adjust as needed */
+ /* background-color: red; */
+}
+
+
+.Infographics {
+  position: absolute;
+  top: 300px;
+  right: 220px;
+  
+}
+
+.h1_zwembad{
+  position: absolute;
+  top: 300px;
+  right: 220px;
+}

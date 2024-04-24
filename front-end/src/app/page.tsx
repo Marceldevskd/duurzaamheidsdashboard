@@ -7,6 +7,7 @@ import LineChart from "../components/LineChart";
 // import Licht from "../components/Licht";
 import LightAdvice from "@/components/lightAdvice";
 import WaterUsage from "../components/BarChart/WaterUsage"
+import Infographics from "../components/Infographics"
 
 const Home: React.FC = () => {
   return (
@@ -34,15 +35,18 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-
+            
+         <div>
+          <Infographics />
+         </div>
+            
         <div className={styles.column_slides}>
           <div className={styles.slideshowContainer}>
             <Slideshow />
           </div>
         </div>
 
-        {/* rens zijn code  */}
-        {/* <div id="lamp component">{Licht()}</div> */}
+       
       </main>
     </body>
   );

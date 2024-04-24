@@ -12,7 +12,7 @@ export default function BarChart({ data }) {
     datasets: [
       {
         label: 'Water usage in milliliters',
-        data: [0, 0, 0, 0, 0, 0, 0],
+        data: data,
         borderColor: 'lightblue',
         backgroundColor: 'blue'
       }
@@ -20,11 +20,12 @@ export default function BarChart({ data }) {
   });
 
   useEffect(() => {
-    const todayNumber = new Date().getDay() - 1;
+    const todayNumber = new Date().getDay() -1 ;
     const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     const todayIndex = todayNumber < 0 ? 6 : todayNumber; // Handle Sunday
-    const updatedData = [...chartData.datasets[0].data];
-    updatedData[todayIndex] = data;
+    console.log(todayIndex);
+    let updatedData = [...chartData.datasets[0].data];
+    updatedData = data;
     setChartData(prevData => ({
       ...prevData,
       datasets: [{
@@ -32,7 +33,6 @@ export default function BarChart({ data }) {
         data: updatedData
       }]
     }));
-    console.log(updatedData);
   }, [data]);
   const chartOptions = {
     plugins: {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import BarChart from "./BarChart";
 import callAPI from "./get-sensor";
 import destructurer from "./sensor-destructurer";
+import getDays from "./get-days"
 
 const WaterUsage: React.FC = () => {
    const [pastDays, setPastDays] = useState<Array<number | null>>([]);
@@ -16,9 +17,8 @@ const WaterUsage: React.FC = () => {
                const parsedData = destructurer(data);
                if (parsedData !== null) {
                   // Update pastDays array with today's reading
-                  const updatedPastDays = [...pastDays];
-                  updatedPastDays.push(parsedData);
-                  setPastDays(updatedPastDays);
+                  setPastDays(parsedData);
+                  const days = getDays();
                } else {
                   setError("Error parsing data. Please try again later.");
                }

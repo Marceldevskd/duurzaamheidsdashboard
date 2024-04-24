@@ -12,29 +12,32 @@ const Home: React.FC = () => {
   return (
     <body>
       <main className={styles.main}>
+        {/* Header section */}
         <div className={styles.row}>
           <div className={styles.column_hu}>
             <img src="\Images\hu-logo.png" alt="HU" className={styles.img_hu} />
           </div>
           <div className={styles.column_head}>
-            <div>
-              <Header />
-            </div>
+            <Header />
           </div>
         </div>
 
-        {/* siem zijn code */}
+        {/* Main content section */}
         <div className={styles.column_content}>
+          {/* Water Usage Chart */}
           <div className={styles.waterverbruik_vak}>
             <WaterUsage />
           </div>
+
+          {/* Right Container with Light Advice */}
           <div className={styles.rightContainer}>
             <div className={styles.lightAdvice_vak}>
-              {/* <LightAdvice /> */}
+              <LightAdvice />
             </div>
           </div>
         </div>
 
+        {/* Slideshow section */}
         <div className={styles.column_slides}>
           <div className={styles.slideshowContainer}>
             <Slideshow />
@@ -43,8 +46,10 @@ const Home: React.FC = () => {
 
         {/* rens zijn code  */}
         {/* <div id="lamp component">{Licht()}</div> */}
+
       </main>
     </body>
   );
 };
+
 export default Home;

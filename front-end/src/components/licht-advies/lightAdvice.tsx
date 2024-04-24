@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../components/LightAdvice.module.css";
+import styles from "../licht-advies/LightAdvice.module.css";
 import { LuLightbulb, LuLightbulbOff } from "react-icons/lu";
 import { CiCloudMoon, CiSun } from "react-icons/ci";
 

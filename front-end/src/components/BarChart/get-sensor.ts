@@ -1,3 +1,4 @@
+// Fetching de data van de back-end
 async function callAPI() {
    try {
       const res = await fetch(

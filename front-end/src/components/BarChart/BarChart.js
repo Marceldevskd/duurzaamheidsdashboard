@@ -1,14 +1,14 @@
-// BarChart.tsx
 import { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import styles from './BarChart.css';
+import getDays from "./get-days"
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function BarChart({ data }) {
   const [chartData, setChartData] = useState({
-    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    labels: getDays(),
     datasets: [
       {
         label: 'Water usage in milliliters',
@@ -20,10 +20,9 @@ export default function BarChart({ data }) {
   });
 
   useEffect(() => {
-    const todayNumber = new Date().getDay() -1 ;
-    const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const todayNumber = new Date().getDay() - 1;
+    const daysOfWeek = getDays();
     const todayIndex = todayNumber < 0 ? 6 : todayNumber; // Handle Sunday
-    console.log(todayIndex);
     let updatedData = [...chartData.datasets[0].data];
     updatedData = data;
     setChartData(prevData => ({
@@ -54,11 +53,6 @@ export default function BarChart({ data }) {
     </div>
   );
 }
-
-
-
-
-
 
 // note:
 // kijk naar de website die hieronder vermeld staat voor het automatisch updaten van de data in de grafiek

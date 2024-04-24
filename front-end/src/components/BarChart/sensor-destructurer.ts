@@ -5,15 +5,15 @@ function destructurer(data: any) {
 
    try {
 
-      console.log('data:', data);
+      // console.log('data:', data);
 
       // console.log("Data datum:", dataTodayDate, "Huidige datum:", currentDate.toISOString().split('T')[0]);
       let result = [];
 
       for (let i=0; i < data.length; i++) {
-         result[data.length-i -1] = data[i].totalAmount 
+         result[i] = data[i].totalAmount 
       }
-      console.log(result);
+      // console.log(result);
 
       return result
 

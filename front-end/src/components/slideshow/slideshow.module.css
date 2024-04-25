@@ -5,8 +5,9 @@
 }
 
 .slide {
-  flex: 0 0 50%;
-  margin-left: 250px;
+  flex: 0 0 calc(33.3333% - 4rem);
+  margin-left: 4rem; /* The margin between slides */
+  transition: transform 1s ease-in-out; /* Transition for smooth movement */
 }
 
 .imageContainer {
@@ -18,17 +19,17 @@
 .mySlides {
   border: solid 3px var(--clr-hu-notif);
   border-radius: 10px;
-  max-width: 160px;
+  max-width: 160px; /* Adjust the maximum width of the image */
 }
 
 .slideText {
   overflow: auto;
-  margin-left: 10px;
+  margin-left: 5px; /* Margin between image and text */
   border: solid 3px var(--clr-hu-notif);
   border-radius: 10px;
   background-color: var(--clr-hu-notif-grad);
   padding: 5px;
-  font-size: 15px;
-  width: 300px;
+  font-size: 15px; 
+  width: 260px; /* The width of the text container */
   text-align: center;
 }

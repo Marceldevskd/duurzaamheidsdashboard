@@ -10,15 +10,12 @@ const WaterUsage: React.FC = () => {
    useEffect(() => {
       const fetchData = async () => {
          try {
-
             const data = await callAPI();
-               if (data) {
+            if (data) {
                const parsedData = destructurer(data);
                if (parsedData !== null) {
                   // Update pastDays array with today's reading
-                  const updatedPastDays = [...pastDays];
-                  updatedPastDays.push(parsedData);
-                  setPastDays(updatedPastDays);
+                  setPastDays(parsedData);
                } else {
                   setError("Error parsing data. Please try again later.");
                }
@@ -41,10 +38,12 @@ const WaterUsage: React.FC = () => {
    }, []); // Empty dependency array ensures that the effect runs only once after mount
 
    return (
-      <>
+      <div className="waterUsageColumn">
          {error && <p>{error}</p>}
-         <BarChart data={pastDays} />
-      </>
+         <div style={{ maxWidth: "100%" }}>
+            <BarChart data={pastDays} />
+         </div>
+      </div>
    );
 };
 

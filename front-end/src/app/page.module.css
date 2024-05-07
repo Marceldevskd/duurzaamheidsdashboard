@@ -7,42 +7,44 @@
   padding-left: 20px;
 }
 
-.column_hu {
-  margin: 5px 0;
-}
 
-.img_hu {
-  height: 40px;
-  margin-left: 5px;
-}
-
-.column_head {
+.header {
   margin-bottom: 20px;
 }
 
-.column_content {
+.columnContainer {
   display: flex;
+  width: 100%;
   flex-direction: row;
-  align-items: center;
 }
 
-.waterverbruik_vak {
-  margin: 100px;
+.waterUsageColumn {
+  margin-left: 5%;
+  margin-right: 2.25%;
+  width: 27%;
   padding: 20px;
   border: 3px solid var(--clr-hu-blue-grad-dark);
   border-radius: 5px;
 }
 
-/* duwt het lichten vak naar rechts */
-.rightContainer { 
-  margin-left: auto;
+.extraColumn {
+  margin-left: 2.25%;
+  margin-right: 2.25%;
+  width: 27%;
+  border: 3px solid var(--clr-hu-blue-grad-dark);
+  border-radius: 5px;
 }
 
-.lightAdvice_vak {
-  margin-right: 100px;
+.lightAdviceColumn {
+  margin-left: 2.25%;
+  margin-right: 5%;
+  width: 27%;
+  /* padding: 20px; */
+  border: 3px solid var(--clr-hu-blue-grad-dark);
+  border-radius: 5px;
 }
 
-.column_slides {
+.slideshowContainer {
   position: absolute;
   bottom: 0;
   width: 100%;

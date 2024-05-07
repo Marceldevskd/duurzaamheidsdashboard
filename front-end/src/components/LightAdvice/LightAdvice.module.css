@@ -2,22 +2,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 3px solid var(--clr-hu-blue-grad-dark);
-  border-radius: 5px;
+  /* border: 3px solid var(--clr-hu-blue-grad-dark); */
+  /* border-radius: 5px; */
   background-color: var(--clr-hu-primary);
-  height: 300px;
-  width: 550px;
+  width: 100%;
+  height: 100%;
 }
 
 .heading {
-  margin: 10px; 
+  margin: 10px;
 }
 
 .buttonContainer {
-	display: flex;
-	justify-content: space-evenly;
-	width: 100%;
- }
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
 
 .toggleButton {
   border: 3px solid white;

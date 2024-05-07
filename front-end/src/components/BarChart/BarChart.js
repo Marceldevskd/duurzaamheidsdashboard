@@ -1,18 +1,18 @@
-// BarChart.tsx
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import styles from './BarChart.css';
+import getDays from "./get-days"
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function BarChart({ data }) {
   const [chartData, setChartData] = useState({
-    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    labels: getDays(),
     datasets: [
       {
         label: 'Water usage in milliliters',
-        data: [0, 0, 0, 0, 0, 0, 0],
+        data: data,
         borderColor: 'lightblue',
         backgroundColor: 'blue'
       }
@@ -21,10 +21,10 @@ export default function BarChart({ data }) {
 
   useEffect(() => {
     const todayNumber = new Date().getDay() - 1;
-    const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const daysOfWeek = getDays();
     const todayIndex = todayNumber < 0 ? 6 : todayNumber; // Handle Sunday
-    const updatedData = [...chartData.datasets[0].data];
-    updatedData[todayIndex] = data;
+    let updatedData = [...chartData.datasets[0].data];
+    updatedData = data;
     setChartData(prevData => ({
       ...prevData,
       datasets: [{
@@ -32,16 +32,15 @@ export default function BarChart({ data }) {
         data: updatedData
       }]
     }));
-    console.log(updatedData);
   }, [data]);
   const chartOptions = {
     plugins: {
       legend: {
-        position: 'top'
+        display: false // Hides the legend
       },
       title: {
         display: true,
-        text: "Daily water usage"
+        text: "Water verbruik in milliliters per dag van de afgelopen week"
       }
     },
     maintainAspectRatio: false,
@@ -49,18 +48,8 @@ export default function BarChart({ data }) {
   };
 
   return (
-    <div className={styles.container} style={{ width: '600px', height: '250px' }}>
+    <div className={styles.container} style={{ width: '100%', height: '250px' }}>
       <Bar data={chartData} options={chartOptions} />
     </div>
   );
 }
-
-
-
-
-
-
-// note:
-// kijk naar de website die hieronder vermeld staat voor het automatisch updaten van de data in de grafiek
-// https://www.chartjs.org/docs/latest/developers/updates.html
-

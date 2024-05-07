@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./slideshow.module.css";
 
-const Slideshow: React.FC = () => {
+const SlideShow: React.FC = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const slideTexts = [
     "Beëindig armoede overal en in al haar vormen",
@@ -72,4 +72,4 @@ const Slideshow: React.FC = () => {
   );
 };
 
-export default Slideshow;
+export default SlideShow;

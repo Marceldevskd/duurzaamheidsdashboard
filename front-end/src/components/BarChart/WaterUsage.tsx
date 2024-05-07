@@ -38,10 +38,12 @@ const WaterUsage: React.FC = () => {
    }, []); // Empty dependency array ensures that the effect runs only once after mount
 
    return (
-      <>
+      <div className="waterUsageColumn">
          {error && <p>{error}</p>}
-         <BarChart data={pastDays} />
-      </>
+         <div style={{ maxWidth: "100%" }}>
+            <BarChart data={pastDays} />
+         </div>
+      </div>
    );
 };
 

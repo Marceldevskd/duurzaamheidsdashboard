@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import styles from './BarChart.css';
@@ -36,11 +36,11 @@ export default function BarChart({ data }) {
   const chartOptions = {
     plugins: {
       legend: {
-        position: 'top'
+        display: false // Hides the legend
       },
       title: {
         display: true,
-        text: "Daily water usage"
+        text: "Water verbruik in milliliters per dag van de afgelopen week"
       }
     },
     maintainAspectRatio: false,
@@ -48,13 +48,8 @@ export default function BarChart({ data }) {
   };
 
   return (
-    <div className={styles.container} style={{ width: '600px', height: '250px' }}>
+    <div className={styles.container} style={{ width: '100%', height: '250px' }}>
       <Bar data={chartData} options={chartOptions} />
     </div>
   );
 }
-
-// note:
-// kijk naar de website die hieronder vermeld staat voor het automatisch updaten van de data in de grafiek
-// https://www.chartjs.org/docs/latest/developers/updates.html
-

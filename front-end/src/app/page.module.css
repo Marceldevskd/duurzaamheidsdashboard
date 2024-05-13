@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-.title{
+.title {
   padding-left: 20px;
 }
 
@@ -33,6 +33,7 @@
   width: 27%;
   border: 3px solid var(--clr-hu-blue-grad-dark);
   border-radius: 5px;
+  padding: 20px;
 }
 
 .lightAdviceColumn {
@@ -52,44 +53,33 @@
   background-color: var(--clr-hu-primary);
 }
 
-.amount{
+.amount {
   font-size: 50px;
   margin-right: 400px;
 }
 
-.lampContainer{
+.lampContainer {
   display: flex;
-position: absolute;
-/* bottom: 0; */
-left: 0;
+  position: absolute;
+  left: 0;
 }
 
-.lampComponent{
-color: blue;
+.lampComponent {
+  color: blue;
 }
 
-.lampMessage{
-  color:blue;
-margin-left: 25px;
+.lampMessage {
+  color: blue;
+  margin-left: 25px;
 }
 
-.Container_Infographics{
-  position: relative; /* Ensure relative positioning for absolute positioning of children */
-  width: 100%; /* Adjust as needed */
-  height: 100vh; /* Adjust as needed */
- /* background-color: red; */
+.Container_Infographics {
+  width: 100%;
+  height: 100%;
 }
 
 
 .Infographics {
-  position: absolute;
-  top: 300px;
-  right: 220px;
-  
-}
-
-.h1_zwembad{
-  position: absolute;
-  top: 300px;
-  right: 220px;
+  width: 100%;
+  height: 100%;
 }

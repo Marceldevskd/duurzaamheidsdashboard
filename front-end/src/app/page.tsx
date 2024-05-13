@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import Header from "@/components/header/header";
-import Slideshow from "@/components/slideshow/slideshow";
+import Header from "@/components/Header/Header";
+import Slideshow from "@/components/SlideShow/SlideShow";
 import LineChart from "@/components/LineChart/LineChart";
 // import Licht from "../components/Licht";
 import LightAdvice from "@/components/LightAdvice/LightAdvice";
@@ -25,16 +25,14 @@ const Home: React.FC = () => {
           </div>
           
           <div className={styles.extraColumn}>
-            
+            <Infographics />
           </div>
+          
           <div className={styles.lightAdviceColumn}>
             <LightAdvice />
           </div>
         </div>
             
-         <div>
-          <Infographics />
-         </div>
             
         <div className={styles.column_slides}>
           <div className={styles.slideshowContainer}>

@@ -1,0 +1,54 @@
+/* InfographicsCarousel.module.css */
+
+.infographicsContainer {
+   width: 100%;
+   height: 100%;
+   position: relative;
+   overflow: hidden;
+ }
+ 
+ .infographic {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   opacity: 0;
+   transition: opacity 1s ease; /* Adjust transition duration and timing function */
+ }
+ 
+ .infographic:first-child {
+   opacity: 1;
+ }
+ 
+ .infographicImage {
+   width: 100%;
+   height: auto;
+ }
+ 
+ .textInfoGraphic {
+   overflow: auto;
+   margin-left: 5px;
+   border: solid 3px var(--clr-hu-notif);
+   border-radius: 10px;
+   background-color: var(--clr-hu-notif-grad);
+   padding: 5px;
+   font-size: 15px;
+   text-align: center;
+ }
+ .textInfoGraphic2 {
+  overflow: auto;
+  margin-left: 5px;
+  border: solid 3px var(--clr-hu-notif);
+  border-radius: 10px;
+  background-color: var(--clr-hu-notif-grad);
+  padding: 5px;
+  font-size: 15px;
+  text-align: center;
+}
+ /* Styling for the images inside infographics */
+ .infographic img {
+   width: 100%;
+   height: auto;
+ }
+ 

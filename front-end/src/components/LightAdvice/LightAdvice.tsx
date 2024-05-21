@@ -54,9 +54,8 @@ const LightAdvice: React.FC = () => {
         <div className={styles.buttonWrapper}>
           <h2 className={styles.title}>Lampen</h2>
           <button
-            className={`${styles.toggleButton} ${
-              lightsOn ? styles.lightsOff : styles.lightsOn
-            }`}
+            className={`${styles.toggleButton} ${lightsOn ? styles.lightsOff : styles.lightsOn
+              }`}
           >
             <div className={styles.buttonContent}>
               {lightsOn ? (
@@ -76,9 +75,8 @@ const LightAdvice: React.FC = () => {
         <div className={styles.buttonWrapper}>
           <h2 className={styles.title}>Advies</h2>
           <button
-            className={`${styles.toggleButton} ${
-              lightAdviceOn ? styles.lightsOn : styles.lightsOff
-            }`}
+            className={`${styles.toggleButton} ${lightAdviceOn ? styles.lightsOn : styles.lightsOff
+              }`}
           >
             <div className={styles.buttonContent}>
               {lightAdviceOn ? (
@@ -105,6 +103,13 @@ const LightAdvice: React.FC = () => {
               <br /> De lampen zijn nu al {clocks.timer} seconden onnodig aan.
             </>
           )}
+        </p>
+      </div>
+      <div className={styles.energieContainer}>
+        <p className={styles.energieVerbruik}>
+          Dit gebouw verbruikt ongeveer <b>347 kWh</b> aan energie per dag door het onnodig aanstaan van de lampen op de gangen
+          (alle lokalen en overige energieverbruikende dingen zijn hier nog niet bij opgeteld). 
+          Dit kost de school <b>€117,91</b> per dag en <b>€43.037,15</b> per jaar
         </p>
       </div>
     </div>

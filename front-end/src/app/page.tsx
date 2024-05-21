@@ -5,9 +5,9 @@ import Slideshow from "@/components/SlideShow/SlideShow";
 import LineChart from "@/components/LineChart/LineChart";
 // import Licht from "../components/Licht";
 import LightAdvice from "@/components/LightAdvice/LightAdvice";
-import WaterUsage from "@/components/BarChart/WaterUsage"
-import Infographics from "@/components/Infographics"
-import styles from "./page.module.css"
+import WaterUsage from "@/components/BarChart/WaterUsage";
+import Infographics from "@/components/Infographics";
+import styles from "./page.module.css";
 
 const Home: React.FC = () => {
   return (

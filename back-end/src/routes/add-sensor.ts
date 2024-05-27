@@ -9,11 +9,11 @@ app.post('/', async (req: Request, res: Response) => {
 		const addSensorData = req.body as AddSensorProps;
 
 		// Validate the received data
-		if (!addSensorData.name || !addSensorData.type || !addSensorData.unit) {
+		if (!addSensorData.sensorName || !addSensorData.type || !addSensorData.unit) {
 			return res.status(400).json({ error: 'Invalid data received' });
 		}
 
-		const sensor = await Sensors.findOne({ name: addSensorData.name });
+		const sensor = await Sensors.findOne({ name: addSensorData.sensorName });
 		if (sensor) {
 			return res.status(400).json({ error: 'Sensor already exists' });
 		}

@@ -97,6 +97,15 @@ const InfographicsCarousel: React.FC = () => {
         }}
       >
         {/* Add content for the third infographic */}
+        <img
+          src="/Images/bad.png"
+          alt="third infographic"
+          className={styles.infographicImage}
+        />
+          <p className={styles.textInfoGraphic2}>
+          Verdieping 4 verbruikt per maand ongeveer 56400 Liter water. Dat
+          staat gelijk aan de inhoud van 1,6 gemiddelde zwembaden
+        </p>
       </div>
     </div>
   );

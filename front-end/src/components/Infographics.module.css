@@ -46,6 +46,17 @@
   font-size: 15px;
   text-align: center;
 }
+.textInfoGraphic3 {
+  overflow: auto;
+  margin-left: 5px;
+  border: solid 3px var(--clr-hu-notif);
+  border-radius: 10px;
+  background-color: var(--clr-hu-notif-grad);
+  padding: 5px;
+  font-size: 15px;
+  text-align: center;
+}
+
  /* Styling for the images inside infographics */
  .infographic img {
    width: 100%;

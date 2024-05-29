@@ -19,9 +19,14 @@ app.post('/', async (req: Request, res: Response) => {
 		}
 
 		const sensor: SensorProps | null = await Sensors.findOne({ name: sensorName });
-		if (!sensor || sensor.type !== 'Light') {
+		if (!sensor) {
 			return res.status(400).json({ error: 'Invalid sensor name' });
 		}
+
+		if  (sensor.type.toLowerCase() !== 'light') {
+			return res.status(400).json({ error: 'Invalid sensor type (type must be "Light")' });
+		}
+
 
 		if (!sensor.lightReadings) {
 			sensor.lightReadings = {

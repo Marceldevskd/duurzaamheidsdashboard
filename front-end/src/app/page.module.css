@@ -78,12 +78,13 @@
 }
 
 .gif2050 {
-  margin: 20px;
-  margin-left: 625px;
+  margin-left: 5%;
+  margin-right: 2.25%;
+  margin-top: 2.25%;
+  width: 27%;
+  padding: 20px;
   border: 3px solid var(--clr-hu-blue-grad-dark);
   border-radius: 5px;
-  width: 660px;
-  padding: 10px;
   image-rendering: optimizeSpeed; /* STOP SMOOTHING, GIVE ME SPEED  */
   image-rendering: -moz-crisp-edges; /* Firefox                        */
   image-rendering: -o-crisp-edges; /* Opera                          */

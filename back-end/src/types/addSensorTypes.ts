@@ -1,5 +1,5 @@
 export interface AddSensorProps {
-	name: string;
+	sensorName: string;
 	type: string;
 	unit: string;
 	readings?: [];

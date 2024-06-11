@@ -42,7 +42,7 @@ const InfographicsCarousel: React.FC = () => {
     // Function to rotate infographics every few seconds
     const interval = setInterval(() => {
       setCurrentInfographicIndex((prevIndex) => (prevIndex + 1) % 3);
-    }, 25000); // Adjust timing to 15 seconds
+    }, 8000); // Adjust timing to 15 seconds
 
     return () => clearInterval(interval);
   }, []);

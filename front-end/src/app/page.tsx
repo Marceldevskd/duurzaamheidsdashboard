@@ -7,6 +7,7 @@ import WaterUsage from "@/components/BarChart/WaterUsage";
 import InfographicsCarousel from "@/components/Infographics";
 import styles from "./page.module.css";
 import AnimatedGif from "./AnimatedGif";
+import LineChart from "@/components/LineChart/LineChart";
 
 const Home: React.FC = () => {
   return (
@@ -31,14 +32,21 @@ const Home: React.FC = () => {
           <div className={styles.lightAdviceColumn}>
             <LightAdvice />
           </div>
-        </div>
 
-        <div className={styles.gif2050}>
+          <div className={styles.gif2050}>
           <AnimatedGif
             src="https://project2050.info/images/promotion.gif"
             alt="2050 GIF"
+            style={styles.qrcode}
           />
         </div>
+        </div>
+        {/* <div className={styles.linechartColumn}>
+          <LineChart/>
+
+        </div> */}
+
+        
 
         <div className={styles.column_slides}>
           <div className={styles.slideshowContainer}>

@@ -38,7 +38,7 @@ const SlideShow: React.FC = () => {
   }, [slideTexts]);
 
   return (
-    <div ref={containerRef} className={`${styles.sdg_slideshow} ${styles.max_width}`}>
+    <div ref={containerRef} className="styles.fullHeight" >
       <div className={styles.slidesContainer}>
         <div className={styles.slideContainer}>
           {slideTexts.map((text, index) => (

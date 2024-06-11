@@ -63,7 +63,7 @@ const StackedBarChart: React.FC = () => {
     <Box p={5}>
       {/* <Heading mb={5}>Binnenverlichtingsgebruik (Noodzakelijk vs Verspild)</Heading> */}
       <Flex justifyContent="center">
-        <Box w="80%">
+        <Box >
           <Bar data={data} options={options} />
         </Box>
       </Flex>

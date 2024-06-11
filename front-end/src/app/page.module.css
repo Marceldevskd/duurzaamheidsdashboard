@@ -24,6 +24,7 @@
   padding: 20px;
   border: 3px solid var(--clr-hu-blue-grad-dark);
   border-radius: 5px;
+  /* max-height: 400px; */
 }
 
 .extraColumn {
@@ -33,6 +34,7 @@
   border: 3px solid var(--clr-hu-blue-grad-dark);
   border-radius: 5px;
   padding: 20px;
+  /* max-height: 400px; */
 }
 
 .lightAdviceColumn {
@@ -40,6 +42,16 @@
   margin-right: 5%;
   width: 27%;
   /* padding: 20px; */
+  border: 3px solid var(--clr-hu-blue-grad-dark);
+  border-radius: 5px;
+  /* max-height: 400px; */
+}
+
+.stackedBarChartColumn {
+  margin-left: 2.25%;
+  margin-right: 2.25%;
+  width: 40%;
+  padding: 20px;
   border: 3px solid var(--clr-hu-blue-grad-dark);
   border-radius: 5px;
 }
@@ -81,8 +93,10 @@
   margin-left: 5%;
   margin-right: 2.25%;
   margin-top: 2.25%;
-  width: 27%;
+  width: 28%;
   padding: 20px;
+  overflow: hidden;
+  padding-right: 100px;
   border: 3px solid var(--clr-hu-blue-grad-dark);
   border-radius: 5px;
   image-rendering: optimizeSpeed; /* STOP SMOOTHING, GIVE ME SPEED  */
@@ -96,5 +110,33 @@
 
 .AnimatedGif{
   align-items: center;
+}
 
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row {
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+}
+
+.columnContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.column_slides {
+  width: 100%;
+}
+
+.slideshowContainer {
+  width: 100%;
 }

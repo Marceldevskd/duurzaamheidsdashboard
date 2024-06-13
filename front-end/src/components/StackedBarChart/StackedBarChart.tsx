@@ -60,11 +60,10 @@ const StackedBarChart: React.FC = () => {
   };
 
   return (
-    <Box p={5}>
-      {/* <Heading mb={5}>Binnenverlichtingsgebruik (Noodzakelijk vs Verspild)</Heading> */}
-      <Flex justifyContent="center">
-        <Box >
-          <Bar data={data} options={options} />
+    <Box p={5} > {/* Set a fixed height for the container */}
+      <Flex justifyContent="center" height="50%"> {/* Ensure Flex takes the full height */}
+        <Box width="100%" height="50%"> {/* Ensure the inner Box also takes full height */}
+          <Bar data={data} options={options} height={150} /> {/* Set the height of the Bar */}
         </Box>
       </Flex>
     </Box>

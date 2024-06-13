@@ -58,8 +58,7 @@
 
 "use client";
 import React from "react";
-import Header from "@/components/Header/Header";
-import Slideshow from "@/components/SlideShow/SlideShow";
+
 import LightAdvice from "@/components/LightAdvice/LightAdvice";
 import WaterUsage from "@/components/BarChart/WaterUsage";
 import InfographicsCarousel from "@/components/Infographics";
@@ -67,6 +66,8 @@ import styles from "./page.module.css";
 import AnimatedGif from "./AnimatedGif";
 import StackedBarChart from "@/components/StackedBarChart/StackedBarChart";
 import { MdHeight } from "react-icons/md";
+import Header from "@/components/header/header";
+import SlideShow from "@/components/slideshow/slideshow";
 
 const Home: React.FC = () => {
   return (
@@ -74,7 +75,7 @@ const Home: React.FC = () => {
       <main className={styles.main}>
         <div className={styles.row}>
           <div className={styles.header}>
-            <Header />
+            <Header/>
           </div>
         </div>
 
@@ -106,7 +107,7 @@ const Home: React.FC = () => {
 
         <div className={styles.column_slides}>
           <div className={styles.slideshowContainer}>
-            <Slideshow />
+            <SlideShow/>
           </div>
         </div>
       </main>

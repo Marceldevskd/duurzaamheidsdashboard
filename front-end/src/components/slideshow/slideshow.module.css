@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   overflow: hidden;
-height: 100%;
+  height: 100%;
 }
 
 .slide {
@@ -30,12 +30,16 @@ height: 100%;
   border: solid 3px var(--clr-hu-notif);
   border-radius: 10px;
   background-color: var(--clr-hu-notif-grad);
-  padding: 5px;
+  padding: 4px;
   font-size: 15px; 
-  width: auto; /* The width of the text container */
+  width: 74%; /* The width of the text container */
   text-align: center;
   height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 
 .fullHeight{ 
  height: 100%;

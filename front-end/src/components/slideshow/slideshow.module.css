@@ -32,7 +32,7 @@
   background-color: var(--clr-hu-notif-grad);
   padding: 4px;
   font-size: 15px; 
-  width: 74%; /* The width of the text container */
+  width: 75%; /* The width of the text container */
   text-align: center;
   height: 100px;
   display: flex;

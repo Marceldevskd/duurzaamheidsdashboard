@@ -33,7 +33,8 @@ app.post('/', async (req: Request, res: Response) => {
 				timer: 0,
 				lastUpdateUnix: Date.now(),
 				sunShines: false,
-				lightsOn: false
+				lightsOn: false,
+				perDay: [],
 			} as LightReadingProps;
 		}
 

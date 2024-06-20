@@ -23,7 +23,8 @@ app.get('/', async (req: Request, res: Response) => {
 				timer: 0,
 				lastUpdateUnix: Date.now(),
 				sunShines: false,
-				lightsOn: false
+				lightsOn: false,
+				perDay: [], 
 			} as LightReadingProps;
 		}
 
@@ -34,6 +35,7 @@ app.get('/', async (req: Request, res: Response) => {
 			sensor.lightReadings.timer = 0;
 		}
 		sensor.lightReadings.lastUpdateUnix = Date.now();
+		
 		await (sensor as Document).save();
 		res.status(200).json(sensor.lightReadings);
 	} catch (err) {

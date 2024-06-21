@@ -12,6 +12,14 @@ export interface LightReadingProps {
 	lastUpdateUnix: number; // last update in unix Ms
 	sunShines: boolean; // if the sun is shining
 	lightsOn: boolean; // if the lights are on
+	perDay: dayReadingsProps[];
+}
+
+export interface dayReadingsProps {
+	date: string;
+	day: string;
+	noodzakelijkReading: number;
+	overbodigReading: number;
 }
 
 export interface ReadingProps {

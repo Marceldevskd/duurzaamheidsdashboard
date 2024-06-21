@@ -13,6 +13,8 @@ export interface LightReadingProps {
 	sunShines: boolean; // if the sun is shining
 	lightsOn: boolean; // if the lights are on
 	perDay: dayReadingsProps[];
+	necessaryLight: { day: string, total: number }[];
+	unnecessaryLight: { day: string, total: number }[];
 }
 
 export interface dayReadingsProps {

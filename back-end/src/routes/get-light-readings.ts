@@ -1,8 +1,20 @@
+/**
+ * Retrieves the light readings for a specific sensor.
+ * @param req - The request object.
+ * @param res - The response object.
+ * @returns The light readings for the specified sensor.
+ */
+
 import express, { Request, Response } from 'express';
 import Sensors from '../models/sensorsModel';
 import { Document } from 'mongodb';
 import { SensorProps, LightReadingProps } from '../types/sensorsTypes';
+import { getTodayDate } from '../tools/get-today-date';
+
+
 const app = express.Router();
+
+// Update the LightReadingProps type
 
 app.get('/', async (req: Request, res: Response) => {
 	try {
@@ -24,18 +36,37 @@ app.get('/', async (req: Request, res: Response) => {
 				lastUpdateUnix: Date.now(),
 				sunShines: false,
 				lightsOn: false,
-				perDay: [], 
+				perDay: [],
+				necessaryLight: [],
+				unnecessaryLight: [],
 			} as LightReadingProps;
 		}
 
 		if (sensor.lightReadings.sunShines && sensor.lightReadings.lightsOn) {
 			sensor.lightReadings.timer += (Date.now() - sensor.lightReadings.lastUpdateUnix) / 1000;
-		} else {
+			// Add to unnecessary light for the current day
+			const today = getTodayDate();
+			const unnecessaryDay = sensor.lightReadings.unnecessaryLight.find(day => day.day === today);
+			if (unnecessaryDay) {
+				unnecessaryDay.total += sensor.lightReadings.timer;
+			} else {
+				sensor.lightReadings.unnecessaryLight.push({ day: today, total: sensor.lightReadings.timer });
+			}
+		} else if (!sensor.lightReadings.sunShines && sensor.lightReadings.lightsOn) {
 			sensor.lightReadings.totalTime += sensor.lightReadings.timer;
+			// Add to necessary light for the current day
+			const today = getTodayDate();
+			const necessaryDay = sensor.lightReadings.necessaryLight.find(day => day.day === today);
+			if (necessaryDay) {
+				necessaryDay.total += sensor.lightReadings.timer;
+			} else {
+				sensor.lightReadings.necessaryLight.push({ day: today, total: sensor.lightReadings.timer });
+			}
 			sensor.lightReadings.timer = 0;
 		}
+
 		sensor.lightReadings.lastUpdateUnix = Date.now();
-		
+
 		await (sensor as Document).save();
 		res.status(200).json(sensor.lightReadings);
 	} catch (err) {

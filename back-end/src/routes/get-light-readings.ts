@@ -11,6 +11,21 @@ import { Document } from 'mongodb';
 import { SensorProps, LightReadingProps } from '../types/sensorsTypes';
 import { getTodayDate } from '../tools/get-today-date';
 
+interface ResponseProps { 
+	totalTime: number;
+	timer: number;
+
+	sunShines: boolean;
+	lightsOn: boolean;
+	perDay: Array<PerDayProps>;
+}
+
+interface PerDayProps {
+	day: string;
+	date: string;
+	necessaryReading: number;
+	unnecessaryReading: number;
+}
 
 const app = express.Router();
 
@@ -37,8 +52,6 @@ app.get('/', async (req: Request, res: Response) => {
 				sunShines: false,
 				lightsOn: false,
 				perDay: [],
-				necessaryLight: [],
-				unnecessaryLight: [],
 			} as LightReadingProps;
 		}
 

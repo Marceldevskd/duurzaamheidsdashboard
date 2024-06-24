@@ -11,7 +11,7 @@ import { Document } from 'mongodb';
 import { SensorProps, LightReadingProps } from '../types/sensorsTypes';
 import { getTodayDate } from '../tools/get-today-date';
 
-interface ResponseProps { 
+interface ResponseProps {
 	totalTime: number;
 	timer: number;
 
@@ -51,34 +51,26 @@ app.get('/', async (req: Request, res: Response) => {
 				lastUpdateUnix: Date.now(),
 				sunShines: false,
 				lightsOn: false,
-				perDay: [],
-			} as LightReadingProps;
+				perDay: [{ day: getTodayDate(), date: new Date().toISOString().split('T')[0], noodzakelijkReading: 0, overbodigReading: 0 }],
+			} as unknown as LightReadingProps;
 		}
 
-		if (sensor.lightReadings.sunShines && sensor.lightReadings.lightsOn) {
-			sensor.lightReadings.timer += (Date.now() - sensor.lightReadings.lastUpdateUnix) / 1000;
-			// Add to unnecessary light for the current day
-			const today = getTodayDate();
-			const unnecessaryDay = sensor.lightReadings.unnecessaryLight.find(day => day.day === today);
-			if (unnecessaryDay) {
-				unnecessaryDay.total += sensor.lightReadings.timer;
-			} else {
-				sensor.lightReadings.unnecessaryLight.push({ day: today, total: sensor.lightReadings.timer });
-			}
-		} else if (!sensor.lightReadings.sunShines && sensor.lightReadings.lightsOn) {
-			sensor.lightReadings.totalTime += sensor.lightReadings.timer;
-			// Add to necessary light for the current day
-			const today = getTodayDate();
-			const necessaryDay = sensor.lightReadings.necessaryLight.find(day => day.day === today);
-			if (necessaryDay) {
-				necessaryDay.total += sensor.lightReadings.timer;
-			} else {
-				sensor.lightReadings.necessaryLight.push({ day: today, total: sensor.lightReadings.timer });
-			}
-			sensor.lightReadings.timer = 0;
+		if (sensor.lightReadings.perDay.length === 0 || sensor.lightReadings.perDay[sensor.lightReadings.perDay.length - 1].date !== new Date().toISOString().split('T')[0]) {
+			sensor.lightReadings.perDay.push({ day: new Date().toLocaleDateString('en-US', { weekday: 'long' }), date: new Date().toISOString().split('T')[0], noodzakelijkReading: 0, overbodigReading: 0 });
 		}
 
-		sensor.lightReadings.lastUpdateUnix = Date.now();
+		// update the data to reflect the current state
+
+		// system to calculate if yesterday and the day before that have a state change or not
+		const lastReading: number = sensor.lightReadings.lastUpdateUnix;
+		
+
+		let i = 0;
+		while (lastReading < new Date().setHours(0, (i * -24), 0, 0)) {
+			
+		}
+		
+
 
 		await (sensor as Document).save();
 		res.status(200).json(sensor.lightReadings);
@@ -89,3 +81,5 @@ app.get('/', async (req: Request, res: Response) => {
 });
 
 export default app;
+
+

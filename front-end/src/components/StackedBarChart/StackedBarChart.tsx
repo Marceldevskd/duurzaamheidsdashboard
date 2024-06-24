@@ -19,7 +19,7 @@ const StackedBarChart: React.FC = () => {
     labels: ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag', 'Zondag'],
     datasets: [
       {
-        label: 'Noodzakelijke Binnenverlichting',
+        label: 'Noodzakelijke energieverbruik',
         backgroundColor: 'rgba(0, 161, 225)',
         borderColor: 'rgba(0, 161, 225)',
         borderWidth: 1,
@@ -27,7 +27,7 @@ const StackedBarChart: React.FC = () => {
         data: [30, 45, 35, 50, 55, 60, 40],
       },
       {
-        label: 'Verspilde Binnenverlichting',
+        label: 'Verspilde energieverbruik',
         backgroundColor: 'rgba(230, 48, 43)',
         borderColor: 'rgba(230, 48, 43)',
         borderWidth: 1,

@@ -94,10 +94,9 @@ const Home: React.FC = () => {
           </div>
 
           <div className={styles.gif2050}>
-            <AnimatedGif
+            <img
               src="https://project2050.info/images/promotion.gif"
               alt="2050 GIF"
-              style={styles.qrcode}
             />
           </div>
           <div className={styles.stackedBarChartColumn}>

@@ -1,7 +1,7 @@
 async function callEnergieAPI() {
    try {
       const res = await fetch(
-         `http://localhost:4000/get-readings?sensorName=Licht-1`,
+         `http://localhost:4000/get-light-readings?sensorName=Lamp1`,
          {
             method: 'GET',
             headers: {

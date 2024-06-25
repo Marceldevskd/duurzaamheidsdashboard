@@ -4,31 +4,27 @@ function energieDestructurer(data: any) {
    };
 
    try {
-
-      // console.log('data:', data);
-
-      // console.log("Data datum:", dataTodayDate, "Huidige datum:", currentDate.toISOString().split('T')[0]);
       interface resultProps { 
          days: Array<string>
-         noodzakelijkeReadings: Array<string>
-         verspildeReadings: Array<string>
+         necessaryLight: Array<string>
+         unnecessaryLight: Array<string>
       }
       let result: resultProps= {
          days: [],
-         noodzakelijkeReadings: [],
-         verspildeReadings: []
+         necessaryLight: [],
+         unnecessaryLight: []
       };
 
-      for (let i=0; i < data.length; i++) {
+      for (let i=0; i < 7; i++) {
          result.days[i] = data[i].day 
       }
 
-      for (let i=0; i < data.length; i++) {
-         result.noodzakelijkeReadings[i] = data[i].noodzakelijkeReading
+      for (let i=0; i < 7; i++) {
+         result.necessaryLight[i] = data[i].necessaryLight
       }
 
       for (let i=0; i < data.length; i++) {
-         result.verspildeReadings[i] = data[i].verspildeReading 
+         result.necessaryLight[i] = data[i].necessaryLight
       }
 
       

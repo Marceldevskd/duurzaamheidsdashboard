@@ -20,7 +20,15 @@ mongoose
 
 // Express.js app
 const app = express();
+
+// Middleware to log every request to console
+app.use((req, res, next) => {
+	console.log(`Received ${req.method} request to ${req.url}`);
+	next();
+});
 app.use(express.json());
+
+// Enable CORS
 app.use(cors());
 
 // Routes

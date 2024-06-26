@@ -16,9 +16,10 @@ import energieDestructurer from './energie-destructurer';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const StackedBarChart: React.FC = () => {
+const StackedBarChart: React.FC = async () => {
 	// Fetch data from the API
-	const APIData = callEnergieAPI();
+	const APIData = await callEnergieAPI();
+	console.log('APIdata:', APIData)
 	// Destructure the data
 	const result = energieDestructurer(APIData);
 	console.log(result);

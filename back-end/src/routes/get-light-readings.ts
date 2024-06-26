@@ -30,7 +30,7 @@ app.get('/', async (req: Request, res: Response) => {
 				lightsOn: false,
 				perDay: [{
 					day: getTodayDate(),
-					date: new Date().toISOString().split('T')[0],
+					date: new Date(Date.now()).toLocaleDateString('nl-NL', { weekday: 'long' }),
 					necessaryLight: 0,
 					unnecessaryLight: 0
 				}],
@@ -43,7 +43,7 @@ app.get('/', async (req: Request, res: Response) => {
 		}
 
 		calculateDailyLightReadings(sensor, Date.now());
-		
+
 		await (sensor as Document).save();
 		res.status(200).json(sensor.lightReadings);
 	} catch (err) {

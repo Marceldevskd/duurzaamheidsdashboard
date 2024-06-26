@@ -27,13 +27,12 @@ function energieDestructurer(data: any) {
          result.necessaryLight[i] = data[i].necessaryLight
       }
 
-      
-      // console.log(result);
+		console.log(result);
 
       return result
 
    } catch (err) { 
-      // console.log(err); 
+      console.log(err); 
       return null; 
    };
 }

@@ -20,20 +20,8 @@ mongoose
 
 // Express.js app
 const app = express();
-
-// Middleware to log every request to console
-app.use((req, res, next) => {
-	console.log(`Received ${req.method} request to ${req.url}`);
-	next();
-});
-// Enable parsing of JSON bodies
 app.use(express.json());
-
-// Enable parsing of URL-encoded bodies
-app.use(express.urlencoded({ extended: true }));
-
-// Enable CORS
-app.use(cors({ origin: "*" }));
+app.use(cors());
 
 // Routes
 app.use("/add-reading", addReading);
@@ -42,7 +30,6 @@ app.use("/get-readings", getReadings);
 app.use("/add-light-reading/lamps-on", lampLight);
 app.use("/add-light-reading/sun-light", sunLight);
 app.use("/get-light-readings", getLightReadings);
-
 
 // Start the server
 const PORT = process.env.PORT || 4000;

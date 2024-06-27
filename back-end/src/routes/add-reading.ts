@@ -2,7 +2,6 @@ import express, { Request, Response } from 'express';
 import Sensors from '../models/sensorsModel';
 import { ReadingDataProps } from '../types/addReadingTypes';
 import { ReadingProps, SensorReadingsProps} from '../types/sensorsTypes';
-import { getTodayDate } from '../tools/get-today-date';
 
 const app = express.Router();
 
@@ -19,7 +18,10 @@ app.post('/', async (req: Request, res: Response) => {
             return res.status(400).json({ error: 'Invalid sensor name' });
         }
 
-        let todayString: string = getTodayDate(readingData.time);
+        let today = new Date(readingData.time || Date.now()); // Use current time if time is not provided
+        today.setUTCHours(today.getUTCHours() + 1); // Add 1 hour to get UTC+1 time
+        today.setUTCHours(0, 0, 0, 0); // Set time to midnight
+        const todayString = today.toISOString().split('T')[0]; // Convert to ISO string and get only the date
 
         const dayTemplate: ReadingProps = {
             date: todayString,

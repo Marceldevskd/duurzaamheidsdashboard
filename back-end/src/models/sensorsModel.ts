@@ -1,13 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { SensorReadingsProps, ReadingProps, LightReadingProps, SensorProps, DayReadingsProps } from '../types/sensorsTypes';
-
-
-const DayReadingsSchema: Schema<DayReadingsProps> = new Schema({
-	date: String,
-	day: String,
-	necessaryLight: Number,
-	unnecessaryLight: Number
-});
+import { SensorReadingsProps, ReadingProps, LightReadingProps, SensorProps } from '../types/sensorsTypes';
 
 const SensorReadingSchema: Schema<SensorReadingsProps> = new Schema({
 	unixTime: Number,
@@ -25,8 +17,7 @@ const LightReadingSchema: Schema<LightReadingProps> = new Schema({
 	timer: Number,
 	lastUpdateUnix: Number,
 	sunShines: Boolean,
-	lightsOn: Boolean,
-	perDay: [DayReadingsSchema]
+	lightsOn: Boolean
 });
 
 const SensorsSchema: Schema<SensorProps> = new Schema({

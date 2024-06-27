@@ -111,6 +111,17 @@ const LightAdvice: React.FC = () => {
           (alle lokalen en overige energieverbruikende dingen zijn hier nog niet bij opgeteld). 
           Dit kost de school <b>€117,91</b> per dag en <b>€43.037,15</b> per jaar
         </p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>
+        <b>Verbruik per huishouden	</b>	
+        <br />
+        een huishouden verbruikt ongeveer 9,59 kWh per dag		
+        <br />
+        hierdoor verbruikt de HU ongeveer 35 huishoudens aan stroom per dag		
+        </p>
       </div>
     </div>
   );

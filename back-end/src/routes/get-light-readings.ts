@@ -2,19 +2,23 @@ import express, { Request, Response } from 'express';
 import Sensors from '../models/sensorsModel';
 import { Document } from 'mongodb';
 import { SensorProps, LightReadingProps } from '../types/sensorsTypes';
+import { getTodayDate } from '../tools/get-today-date';
+import calculateDailyLightReadings from '../tools/calculate-daily-light-readings';
+
 const app = express.Router();
 
+// GET endpoint for retrieving sensor light readings
 app.get('/', async (req: Request, res: Response) => {
 	try {
 		const sensorName: string = req.query.sensorName as string;
-
 		if (!sensorName || typeof sensorName !== 'string') {
-			return res.status(400).json({ error: 'No data received' });
+			return res.status(400).json({ error: 'No sensor name received' });
 		}
 
 		const sensor: SensorProps | null = await Sensors.findOne({ name: sensorName });
+
 		if (!sensor || sensor.type.toLowerCase() !== 'light') {
-			return res.status(400).json({ error: 'Invalid sensor name' });
+			return res.status(400).json({ error: 'Invalid sensor name or type' });
 		}
 
 		if (!sensor.lightReadings) {
@@ -23,17 +27,23 @@ app.get('/', async (req: Request, res: Response) => {
 				timer: 0,
 				lastUpdateUnix: Date.now(),
 				sunShines: false,
-				lightsOn: false
+				lightsOn: false,
+				perDay: [{
+					day: getTodayDate(),
+					date: new Date(Date.now()).toLocaleDateString('nl-NL', { weekday: 'long' }),
+					necessaryLight: 0,
+					unnecessaryLight: 0
+				}],
 			} as LightReadingProps;
 		}
 
-		if (sensor.lightReadings.sunShines && sensor.lightReadings.lightsOn) {
-			sensor.lightReadings.timer += (Date.now() - sensor.lightReadings.lastUpdateUnix) / 1000;
-		} else {
-			sensor.lightReadings.totalTime += sensor.lightReadings.timer;
-			sensor.lightReadings.timer = 0;
+		// Check if perDay array is initialized
+		if (!sensor.lightReadings.perDay) {
+			sensor.lightReadings.perDay = [];
 		}
-		sensor.lightReadings.lastUpdateUnix = Date.now();
+
+		calculateDailyLightReadings(sensor, Date.now());
+
 		await (sensor as Document).save();
 		res.status(200).json(sensor.lightReadings);
 	} catch (err) {

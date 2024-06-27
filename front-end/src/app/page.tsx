@@ -7,7 +7,7 @@ import WaterUsage from "@/components/BarChart/WaterUsage";
 import InfographicsCarousel from "@/components/Infographics";
 import styles from "./page.module.css";
 import AnimatedGif from "./AnimatedGif";
-// import LineChart from "@/components/LineChart/LineChart";
+import LineChart from "@/components/LineChart/LineChart";
 
 const Home: React.FC = () => {
   return (

@@ -3,6 +3,18 @@ import styles from "./LightAdvice.module.css";
 import { LuLightbulb, LuLightbulbOff } from "react-icons/lu";
 import { CiCloudMoon, CiSun } from "react-icons/ci";
 
+function formatTime(time: number): string {
+	if (time >= 3600) {
+		const hours = Math.floor(time / 3600);
+		return `${hours} uur`;
+	} else if (time >= 60) {
+		const minutes = Math.floor(time / 60);
+		return `${minutes} minuten`;
+	} else {
+		return `${Math.floor(time)} seconden`;
+	}
+}
+
 const LightAdvice: React.FC = () => {
 	const [lightsOn, setLightsOn] = useState(false);
 	const [lightAdviceOn, setLightAdviceOn] = useState(false);
@@ -94,11 +106,11 @@ const LightAdvice: React.FC = () => {
 			</div>
 			<div className={styles.textContainer}>
 				<p className={styles.paragraph}>
-					De afgelopen tijd zijn de lampen {clocks.totalTime} seconden onnodig
-					aan geweest.{" "}
+					De afgelopen tijd zijn de lampen {formatTime(clocks.totalTime)} onnodig
+					aan geweest.
 					{!lightAdviceOn && lightsOn && (
 						<>
-							<br /> De lampen zijn nu al {clocks.timer} seconden onnodig aan.
+							<br /> De lampen zijn nu al {formatTime(clocks.timer)} onnodig aan.
 						</>
 					)}
 				</p>
@@ -115,3 +127,4 @@ const LightAdvice: React.FC = () => {
 };
 
 export default LightAdvice;
+

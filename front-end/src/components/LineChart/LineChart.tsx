@@ -109,7 +109,7 @@ function LineChart() {
 			},
 		},
 	};
-		
+
 
 	return (
 		<div className={styles.chartGroup}>

@@ -40,7 +40,6 @@ app.post('/', async (req: Request, res: Response) => {
             sensor.readings[existingReadingI].totalAmount += readingData.amount;
             sensor.readings[existingReadingI].sensorReadings.push({ unixTime: readingData.time || Date.now(), amount: readingData.amount } as SensorReadingsProps);
         } else {
-            console.log(existingReading, existingReadingI)
             throw new Error('Error adding data');
         }
 

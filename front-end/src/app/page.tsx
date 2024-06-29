@@ -1,5 +1,3 @@
-// export default Home;
-
 "use client";
 import React from "react";
 
@@ -7,10 +5,9 @@ import LightAdvice from "@/components/LightAdvice/LightAdvice";
 import WaterUsage from "@/components/BarChart/WaterUsage";
 import InfographicsCarousel from "@/components/Infographics";
 import styles from "./page.module.css";
-import AnimatedGif from "./AnimatedGif";
 
 import StackedBarChart from "@/components/StackedBarChart/StackedBarChart";
-import { MdHeight } from "react-icons/md";
+
 import Header from "@/components/header/header";
 import SlideShow from "@/components/slideshow/slideshow";
 
@@ -30,8 +27,7 @@ const Home: React.FC = () => {
           </div>
 
           <div className={styles.extraColumn}>
-            <InfographicsCarousel />{" "}
-            {/* Gebruik de InfographicsCarousel component hier */}
+            <InfographicsCarousel />
           </div>
 
           <div className={styles.lightAdviceColumn}>

@@ -20,23 +20,14 @@ function energieDestructurer(data: any) {
     };
 
     for (let i = 0; i < days; i++) {
-      result.days[i] = data.perDay[i].day;
-    }
-
-    for (let i = 0; i < days; i++) {
       result.necessaryLight[i] = data.perDay[i].necessaryLight;
+		result.necessaryLight[i] = data.perDay[i].necessaryLight;
+		result.days[i] = data.perDay[i].day;
     }
-
-    for (let i = 0; i < days; i++) {
-      result.necessaryLight[i] = data.perDay[i].necessaryLight;
-    }
-
-    console.log("result:", result);
 
     return result;
   } catch (err) {
     console.log(err);
-    console.log("banaan");
     return null;
   }
 }

@@ -10,7 +10,7 @@ import {
 	Tooltip,
 	Legend,
 } from 'chart.js';
-import { MdHeight } from 'react-icons/md';
+
 import callEnergieAPI from './energie-API';
 import energieDestructurer from './energie-destructurer';
 
@@ -19,10 +19,8 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const StackedBarChart: React.FC = async () => {
 	// Fetch data from the API
 	const APIData = await callEnergieAPI();
-	console.log('APIdata:', APIData)
 	// Destructure the data
 	const result = energieDestructurer(APIData);
-	console.log(result);
 	if (!result) {
 		return <Heading size="md">No data available</Heading>;
 	}

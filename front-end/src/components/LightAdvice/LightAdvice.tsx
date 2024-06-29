@@ -13,7 +13,6 @@ const LightAdvice: React.FC = () => {
     const timerId = setInterval(async () => {
       const data = await callAPI();
       if (data) {
-        console.log(data);
         setLightAdviceOn(!data.sunShines);
         setLightsOn(data.lightsOn);
         setClocks({ totalTime: data.totalTime, timer: data.timer });
@@ -39,7 +38,6 @@ const LightAdvice: React.FC = () => {
       if (res.ok) {
         const data = await res.json();
         setError(null);
-        console.log(data);
         return data;
       }
     } catch (err) {

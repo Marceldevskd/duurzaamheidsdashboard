@@ -36,9 +36,11 @@ app.post('/', async (req: Request, res: Response) => {
 				sunShines: false,
 				lightsOn: false,
 				perDay: [],
-				necessaryLight: [],
-				unnecessaryLight: [],
 			} as LightReadingProps;
+		}
+		
+		if (!sensor.lightReadings.perDay) {
+			sensor.lightReadings.perDay = [];
 		}
 
 		sensor.lightReadings.sunShines = (req.body.reading === 1) as boolean;

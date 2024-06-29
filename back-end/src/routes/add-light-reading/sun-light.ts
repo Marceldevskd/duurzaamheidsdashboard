@@ -1,24 +1,25 @@
 import express, { Request, Response } from 'express';
 import Sensors from '../../models/sensorsModel';
-import { LightReadingProps, SensorProps} from '../../types/sensorsTypes';
-import { LightRequestBodyProps } from './types/types';
 import { Document } from 'mongodb';
+import { SensorProps, LightReadingProps } from '../../types/sensorsTypes';
+import calculateDailyLightReadings from '../../tools/calculate-daily-light-readings';
 
 const app = express.Router();
 
 app.post('/', async (req: Request, res: Response) => {
 	try {
-		let { sensorName, reading }: LightRequestBodyProps = req.body;
+		const sensorName: string = req.query.sensorName as string;
 
-		if (!sensorName || reading == undefined || reading == null || typeof reading !== 'number' || typeof sensorName !== 'string') {
-			return res.status(400).json({ error: 'Invalid data received' });
+		if (!sensorName || typeof sensorName !== 'string') {
+			return res.status(400).json({ error: 'No sensor name received' });
 		}
 
-		if (reading !== 0 && reading !== 1) {
-			return res.status(400).json({ error: 'Invalid reading value' });
+		if (req.body.reading === undefined) {
+			return res.status(400).json({ error: 'No reading received' });
 		}
 
-		const sensor: SensorProps | null = await Sensors.findOne({ name: sensorName });
+		let sensor: SensorProps | null = await Sensors.findOne({ name: sensorName });
+
 		if (!sensor) {
 			return res.status(400).json({ error: 'Invalid sensor name' });
 		}
@@ -33,25 +34,23 @@ app.post('/', async (req: Request, res: Response) => {
 				timer: 0,
 				lastUpdateUnix: Date.now(),
 				sunShines: false,
-				lightsOn: false
+				lightsOn: false,
+				perDay: [],
+				necessaryLight: [],
+				unnecessaryLight: [],
 			} as LightReadingProps;
 		}
 
-		sensor.lightReadings.sunShines = (reading === 1) as boolean;
-
-		if (sensor.lightReadings.sunShines && sensor.lightReadings.lightsOn) {
-			sensor.lightReadings.timer += (Date.now() - sensor.lightReadings.lastUpdateUnix) / 1000;
-		} else {
-			sensor.lightReadings.totalTime += sensor.lightReadings.timer;
-			sensor.lightReadings.timer = 0;
-		}
-
+		sensor.lightReadings.sunShines = (req.body.reading === 1) as boolean;
 		sensor.lightReadings.lastUpdateUnix = Date.now();
+
+		calculateDailyLightReadings(sensor, Date.now());
+
 		await (sensor as Document).save();
-		return res.status(200).send('Reading added successfully');
+		res.status(200).json(sensor.lightReadings);
 	} catch (err) {
-		console.error('Error adding data:', err);
-		return res.status(500).send('Internal Server Error');
+		console.error('Error updating sunShines data:', err);
+		res.status(500).send('Internal Server Error');
 	}
 });
 

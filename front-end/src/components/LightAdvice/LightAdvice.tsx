@@ -20,7 +20,7 @@ const LightAdvice: React.FC = () => {
       } else {
         setError("Error fetching data. Please try again later.");
       }
-    }, 1000);
+    }, 10000);
 
     return () => clearInterval(timerId);
   }, []);

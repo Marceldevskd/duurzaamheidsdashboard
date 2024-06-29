@@ -8,9 +8,9 @@ const app = express.Router();
 
 app.post('/', async (req: Request, res: Response) => {
 	try {
-		const sensorName: string = req.query.sensorName as string;
-
-		if (!sensorName || typeof sensorName !== 'string') {
+		const sensorName: string = req.body.sensorname as string;
+		
+		if (!sensorName) {
 			return res.status(400).json({ error: 'No sensor name received' });
 		}
 

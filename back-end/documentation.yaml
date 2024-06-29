@@ -182,3 +182,54 @@ paths:
             Invalid sensor type (type must be "Light")
         '500':
           description: Internal Server Error
+  /get-light-readings:
+    get:
+      summary: Retrieve sensor light readings
+      description: Retrieve the light readings of a specific sensor by its name.
+      parameters:
+        - in: query
+          name: sensorName
+          schema:
+            type: string
+          required: true
+          description: The name of the sensor
+      responses:
+        '200':
+          description: Successfully retrieved the sensor light readings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalTime:
+                    type: integer
+                    description: Total time the light was on
+                  timer:
+                    type: integer
+                    description: Timer value
+                  lastUpdateUnix:
+                    type: integer
+                    description: Last update timestamp in Unix format
+                  sunShines:
+                    type: boolean
+                    description: Whether the sun is shining
+                  lightsOn:
+                    type: boolean
+                    description: Whether the lights are on
+                  perDay:
+                    type: array
+                    description: Daily light readings
+                    items:
+                      type: object
+                      properties:
+                        day:
+                          type: string
+                          description: Day of the reading
+                        date:
+                          type: string
+                          description: Date of the reading
+                        necessaryLight:
+                          type: integer
+                          description: Amount of necessary light
+                        unnecessaryLight:
+                          type: integer

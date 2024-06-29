@@ -1,0 +1,17 @@
+.chartGroup {
+	background-color: var(--clr-hu-grad-blue-light);
+	border: 2px solid var(--clr-hu-grad-blue-dark);
+	border-radius: 10px;
+}
+
+.chartText {
+	display: flex;
+	justify-content: center;
+}
+
+.chart {
+	width: 800px;
+	height: auto;
+	padding: 20px;
+	cursor: pointer;
+}

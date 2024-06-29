@@ -1,0 +1,50 @@
+.infographicsContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.infographic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.infographic:first-child {
+  opacity: 1;
+}
+
+.infographicImage,
+.infographicImage2,
+.infographicImage3 {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.textInfoGraphic,
+.textInfoGraphic2,
+.textInfoGraphic3 {
+  overflow: auto;
+  margin-left: 5px;
+  border: solid 3px var(--clr-hu-notif);
+  border-radius: 10px;
+  background-color: var(--clr-hu-notif-grad);
+  padding: 5px;
+  font-size: 15px;
+  text-align: center;
+  position: absolute;
+  bottom: 10px; /* Adjust position if needed */
+  width: 90%; /* Adjust width if needed */
+}

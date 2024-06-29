@@ -1,54 +1,58 @@
 "use client";
-import styles from "./page.module.css";
 import React from "react";
-import Header from "../components/header";
-import Slideshow from "../components/slideshow";
-import LineChart from "../components/LineChart";
-import Timer from "../components/Timer";
-import Licht from "../components/Licht";
-import API from "../components/api";
-import BarChart from "@/components/BarChart";
-import LightAdvice from "@/components/lightAdvice";
+
+import LightAdvice from "@/components/LightAdvice/LightAdvice";
+import WaterUsage from "@/components/BarChart/WaterUsage";
+import InfographicsCarousel from "@/components/Infographics";
+import styles from "./page.module.css";
+
+import StackedBarChart from "@/components/StackedBarChart/StackedBarChart";
+
+import Header from "@/components/header/header";
+import SlideShow from "@/components/slideshow/slideshow";
 
 const Home: React.FC = () => {
-  return (
-    <body>
-      <main className={styles.main}>
-        <div className={styles.row}>
-          <div className={styles.column_hu}>
-            <img src="\Images\hu-logo.png" alt="HU" className={styles.img_hu} />
-          </div>
-          <div className={styles.column_head}>
-            <div>
-              <Header />
-            </div>
-          </div>
-        </div>
+	return (
+		<body>
+			<main className={styles.main}>
+				<div className={styles.row}>
+					<div className={styles.header}>
+						<Header />
+					</div>
+				</div>
 
-        <div className={styles.column_content}>
-          {/* siem zijn code */}
-          {/* <API /> */}
-          <div className={styles.waterverbruik_vak}>
-            {/* {LineChart()} */}
-            <BarChart />
-          </div>
+				<div className={styles.columnContainer}>
+					<div className={styles.waterUsageColumn}>
+						<WaterUsage />
+					</div>
 
-          <div className={styles.rightContainer}>
-            <div className={styles.lightAdvice_vak}>
-              <LightAdvice />
-            </div>
-          </div>
-        </div>
+					<div className={styles.extraColumn}>
+						<InfographicsCarousel />
+					</div>
 
-        <div className={styles.column_slides}>
-          <div className={styles.slideshowContainer}>
-            <Slideshow />
-          </div>
-        </div>
-        {/* rens zijn code  */}
-        <div id="lamp component">{Licht()}</div>
-      </main>
-    </body>
-  );
+					<div className={styles.lightAdviceColumn}>
+						<LightAdvice />
+					</div>
+
+					<div className={styles.gif2050}>
+						<img
+							src="https://project2050.info/images/promotion.gif"
+							alt="2050 GIF"
+						/>
+					</div>
+					<div className={styles.stackedBarChartColumn}>
+						<StackedBarChart />
+					</div>
+				</div>
+
+				<div className={styles.column_slides}>
+					<div className={styles.slideshowContainer}>
+						<SlideShow />
+					</div>
+				</div>
+			</main>
+		</body>
+	);
 };
+
 export default Home;

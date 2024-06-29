@@ -10,8 +10,8 @@ function energieDestructurer(data: any) {
 		}
 		interface resultProps {
 			days: Array<string>;
-			necessaryLight: Array<string>;
-			unnecessaryLight: Array<string>;
+			necessaryLight: Array<number>;
+			unnecessaryLight: Array<number>;
 		}
 
 		let result: resultProps = {
@@ -21,8 +21,8 @@ function energieDestructurer(data: any) {
 		};
 
 		for (let i = 0; i < days; i++) {
-			result.necessaryLight[i] = data.perDay[i].necessaryLight;
-			result.necessaryLight[i] = data.perDay[i].necessaryLight;
+			result.necessaryLight[i] = data.perDay[i].necessaryLight / 86400 * 100;
+			result.unnecessaryLight[i] = data.perDay[i].unnecessaryLight / 86400 * 100;
 			result.days[i] = data.perDay[i].day;
 		}
 

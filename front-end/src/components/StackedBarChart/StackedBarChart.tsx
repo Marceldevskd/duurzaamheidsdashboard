@@ -65,6 +65,8 @@ const StackedBarChart: React.FC = async () => {
 			y: {
 				stacked: true,
 				beginAtZero: true,
+				min: 0,
+				max: 100,
 			},
 		},
 	};

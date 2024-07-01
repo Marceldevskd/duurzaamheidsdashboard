@@ -110,7 +110,7 @@ const LightAdvice: React.FC = () => {
         <p className={styles.paragraph}>
           De afgelopen tijd zijn de lampen {formatTime(clocks.totalTime)}{" "}
           onnodig aan geweest.
-          {lightAdviceOn && lightsOn && (
+          {lightAdviceOn && !lightsOn && (
             <>
               <br /> De lampen zijn nu al {formatTime(clocks.timer)} onnodig
               aan.

@@ -68,7 +68,7 @@ const LightAdvice: React.FC = () => {
 							}`}
 					>
 						<div className={styles.buttonContent}>
-							{lightsOn ? (
+							{!lightsOn ? (
 								<>
 									<LuLightbulbOff className={styles.icon} />
 									<span className={styles.buttonText}>Lampen uit</span>
@@ -89,7 +89,7 @@ const LightAdvice: React.FC = () => {
 							}`}
 					>
 						<div className={styles.buttonContent}>
-							{lightAdviceOn ? (
+							{!lightAdviceOn ? (
 								<>
 									<CiCloudMoon className={styles.icon} />
 									<span className={styles.buttonText}>Lampen aan</span>

@@ -15,11 +15,21 @@ function formatTime(time: number): string {
 	}
 }
 
-const LightAdvice: React.FC = () => {
+const LightAdvice: React.FC = async () => {
 	const [lightsOn, setLightsOn] = useState(false);
 	const [lightAdviceOn, setLightAdviceOn] = useState(false);
 	const [clocks, setClocks] = useState({ totalTime: 0, timer: 0 });
 	const [error, setError] = useState<string | null>(null);
+
+	const data = await callAPI();
+	if (data) {
+		console.log(data);
+		setLightAdviceOn(!data.sunShines);
+		setLightsOn(data.lightsOn);
+		setClocks({ totalTime: data.totalTime, timer: data.timer });
+	} else {
+		setError("Error fetching data. Please try again later.");
+	}
 
 	useEffect(() => {
 		const timerId = setInterval(async () => {

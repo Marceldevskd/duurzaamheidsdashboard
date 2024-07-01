@@ -38,7 +38,7 @@ const LightAdvice: React.FC = () => {
 	async function callAPI() {
 		try {
 			const res = await fetch(
-				`http://localhost:4000/get-light-readings?sensorName=Licht-1`,
+				`https://duurzaam-dashboard.nl/api/get-light-readings?sensorName=Licht-1`,
 				{
 					method: "GET",
 					headers: {

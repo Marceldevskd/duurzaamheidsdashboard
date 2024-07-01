@@ -21,16 +21,6 @@ const LightAdvice: React.FC = async () => {
 	const [clocks, setClocks] = useState({ totalTime: 0, timer: 0 });
 	const [error, setError] = useState<string | null>(null);
 
-	const data = await callAPI();
-	if (data) {
-		console.log(data);
-		setLightAdviceOn(data.sunShines);
-		setLightsOn(data.lightsOn);
-		setClocks({ totalTime: data.totalTime, timer: data.timer });
-	} else {
-		setError("Error fetching data. Please try again later.");
-	}
-
 	useEffect(() => {
 		const timerId = setInterval(async () => {
 			const data = await callAPI();
@@ -42,7 +32,7 @@ const LightAdvice: React.FC = async () => {
 			} else {
 				setError("Error fetching data. Please try again later.");
 			}
-		}, 10000);
+		}, 1000);
 
 		return () => clearInterval(timerId);
 	}, []);

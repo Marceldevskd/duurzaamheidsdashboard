@@ -11,6 +11,12 @@ import lampLight from "./routes/add-light-reading/lamp-light";
 import sunLight from "./routes/add-light-reading/sun-light";
 import getLightReadings from "./routes/get-light-readings";
 
+const corsOptions = {
+  origin: "*", // Allows all origins
+  methods: ["GET", "POST"], // Allows specific HTTP methods
+  allowedHeaders: ["Content-Type"], // Allows specific headers
+};
+
 // Connect to MongoDB
 mongoose
   .connect("mongodb://127.0.0.1:27017/")
@@ -19,6 +25,8 @@ mongoose
 
 // Express.js app
 const app = express();
+
+app.use(cors(corsOptions));
 
 // Middleware to log every request to console
 app.use((req, res, next) => {
@@ -32,7 +40,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Enable CORS
-app.use(cors());
 
 // Routes
 app.use("/add-reading", addReading);

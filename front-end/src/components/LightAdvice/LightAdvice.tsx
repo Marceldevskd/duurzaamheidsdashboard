@@ -24,7 +24,7 @@ const LightAdvice: React.FC = async () => {
 	const data = await callAPI();
 	if (data) {
 		console.log(data);
-		setLightAdviceOn(!data.sunShines);
+		setLightAdviceOn(data.sunShines);
 		setLightsOn(data.lightsOn);
 		setClocks({ totalTime: data.totalTime, timer: data.timer });
 	} else {

@@ -25,7 +25,7 @@ const LightAdvice: React.FC = () => {
 		const timerId = setInterval(async () => {
 			const data = await callAPI();
 			if (data) {
-				// console.log(data);
+				console.log(data);
 				setLightAdviceOn(!data.sunShines);
 				setLightsOn(data.lightsOn);
 				setClocks({ totalTime: data.totalTime, timer: data.timer });
@@ -91,7 +91,7 @@ const LightAdvice: React.FC = () => {
 							}`}
 					>
 						<div className={styles.buttonContent}>
-							{!lightAdviceOn ? (
+							{lightAdviceOn ? (
 								<>
 									<CiCloudMoon className={styles.icon} />
 									<span className={styles.buttonText}>Lampen aan</span>

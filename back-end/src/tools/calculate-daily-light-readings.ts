@@ -1,5 +1,3 @@
-// Function to calculate daily light readings
-
 import { SensorProps } from '../types/sensorsTypes';
 import { getTodayDate } from './get-today-date';
 
@@ -15,15 +13,10 @@ const calculateDailyLightReadings = (sensor: SensorProps, currentTime: number): 
 		};
 	}
 
-	if (!sensor.lightReadings.perDay) {
-		sensor.lightReadings.perDay = [];
-	}
-
-
 	const today = new Date().toISOString().split('T')[0];
-	const lastReading = sensor.lightReadings.lastUpdateUnix;
 	const oneDayInMillis = 24 * 60 * 60 * 1000;
 	let currentDayUnix = new Date(today).setHours(2, 0, 0, 0);
+	let lastReading = sensor.lightReadings.lastUpdateUnix;
 
 	while (lastReading <= currentDayUnix) {
 		const day = getTodayDate(new Date(currentDayUnix));
@@ -65,8 +58,9 @@ const calculateDailyLightReadings = (sensor: SensorProps, currentTime: number): 
 				});
 			}
 		}
+
 		sensor.lightReadings.timer = 0;
-		currentDayUnix -= oneDayInMillis;
+		lastReading += oneDayInMillis; // Move to the next day
 	}
 
 	sensor.lightReadings.lastUpdateUnix = currentTime;

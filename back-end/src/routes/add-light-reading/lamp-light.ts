@@ -50,7 +50,11 @@ app.post("/", async (req: Request, res: Response) => {
 		sensor.lightReadings.lightsOn = (req.body.reading === 1) as boolean;
 		sensor.lightReadings.lastUpdateUnix = Date.now();
 
-		calculateDailyLightReadings(sensor, Date.now());
+		sensor = calculateDailyLightReadings(sensor, Date.now());
+
+		if (!sensor) {
+			throw Error('Error calculating daily light readings');
+		}
 
 		await (sensor as Document).save();
 		res.status(200).json(sensor.lightReadings);

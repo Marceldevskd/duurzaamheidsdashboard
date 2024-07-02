@@ -15,7 +15,7 @@ app.get('/', async (req: Request, res: Response) => {
 			return res.status(400).json({ error: 'No sensor name received' });
 		}
 
-		const sensor: SensorProps | null = await Sensors.findOne({ name: sensorName });
+		let sensor: SensorProps | null = await Sensors.findOne({ name: sensorName });
 
 		if (!sensor || sensor.type.toLowerCase() !== 'light') {
 			return res.status(400).json({ error: 'Invalid sensor name or type' });
@@ -42,7 +42,11 @@ app.get('/', async (req: Request, res: Response) => {
 			sensor.lightReadings.perDay = [];
 		}
 
-		calculateDailyLightReadings(sensor, Date.now());
+		sensor = calculateDailyLightReadings(sensor, Date.now());
+		
+		if (!sensor) {
+			throw Error('Error calculating daily light readings');
+		}
 
 		await (sensor as Document).save();
 		res.status(200).json(sensor.lightReadings);

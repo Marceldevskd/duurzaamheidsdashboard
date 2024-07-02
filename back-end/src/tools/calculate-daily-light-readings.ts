@@ -1,7 +1,7 @@
 import { SensorProps } from '../types/sensorsTypes';
 import { getTodayDate } from './get-today-date';
 
-const calculateDailyLightReadings = (sensor: SensorProps, currentTime: number): void => {
+const calculateDailyLightReadings = (sensor: SensorProps, currentTime: number): SensorProps => {
 	if (!sensor.lightReadings) {
 		sensor.lightReadings = {
 			totalTime: 0,
@@ -44,6 +44,8 @@ const calculateDailyLightReadings = (sensor: SensorProps, currentTime: number): 
 					necessaryLight: 0,
 					unnecessaryLight: difference
 				});
+				sensor.lightReadings.totalTime += difference;
+				sensor.lightReadings.timer += difference;
 			}
 		} else if (!sensor.lightReadings.sunShines && sensor.lightReadings.lightsOn) {
 			if (existingEntry) {
@@ -64,6 +66,8 @@ const calculateDailyLightReadings = (sensor: SensorProps, currentTime: number): 
 	}
 
 	sensor.lightReadings.lastUpdateUnix = currentTime;
+
+	return sensor;
 };
 
 export default calculateDailyLightReadings;

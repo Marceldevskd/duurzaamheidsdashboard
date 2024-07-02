@@ -18,13 +18,16 @@ const calculateDailyLightReadings = (sensor: SensorProps, currentTime: number): 
 	let currentDayUnix = new Date(today).setHours(2, 0, 0, 0);
 	let lastReading = sensor.lightReadings.lastUpdateUnix;
 
-	while (lastReading <= currentDayUnix) {
+	// Loop through each day from the last reading to the current day
+	while (lastReading <= currentTime) {
 		const day = getTodayDate(new Date(currentDayUnix));
 		let difference: number;
 
 		if (currentDayUnix === new Date(today).setHours(2, 0, 0, 0)) {
+			// If it's today, calculate the difference from the last reading to the current time
 			difference = currentTime - lastReading;
 		} else {
+			// For past days, the difference is one full day
 			difference = oneDayInMillis;
 		}
 
@@ -62,7 +65,14 @@ const calculateDailyLightReadings = (sensor: SensorProps, currentTime: number): 
 		}
 
 		sensor.lightReadings.timer = 0;
+
+		if (currentDayUnix === new Date(today).setHours(2, 0, 0, 0)) {
+			// If today is processed, break the loop
+			break;
+		}
+
 		lastReading += oneDayInMillis; // Move to the next day
+		currentDayUnix += oneDayInMillis; // Move to the next day
 	}
 
 	sensor.lightReadings.lastUpdateUnix = currentTime;

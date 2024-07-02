@@ -61,10 +61,9 @@ const calculateDailyLightReadings = (sensor: SensorProps, currentTime: number): 
 					necessaryLight: difference,
 					unnecessaryLight: 0
 				});
+				sensor.lightReadings.timer = 0;
 			}
 		}
-
-		sensor.lightReadings.timer = 0;
 
 		if (currentDayUnix === new Date(today).setHours(2, 0, 0, 0)) {
 			// If today is processed, break the loop

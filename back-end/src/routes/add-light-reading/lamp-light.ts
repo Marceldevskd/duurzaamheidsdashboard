@@ -48,7 +48,6 @@ app.post("/", async (req: Request, res: Response) => {
 		}
 
 		sensor.lightReadings.lightsOn = (req.body.reading === 1) as boolean;
-		sensor.lightReadings.lastUpdateUnix = Date.now();
 
 		sensor = calculateDailyLightReadings(sensor, Date.now());
 

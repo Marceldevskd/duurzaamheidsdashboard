@@ -44,10 +44,12 @@ app.get('/', async (req: Request, res: Response) => {
 
 		sensor = calculateDailyLightReadings(sensor, Date.now());
 		
-		if (!sensor) {
+		if (!sensor || !sensor.lightReadings) {
 			throw Error('Error calculating daily light readings');
 		}
 
+		sensor.lightReadings.lastUpdateUnix = Date.now();
+		
 		await (sensor as Document).save();
 		res.status(200).json(sensor.lightReadings);
 	} catch (err) {

@@ -54,7 +54,7 @@ const StackedBarChart: React.FC = async () => {
       },
       title: {
         display: true,
-        text: "Binnenverlichtingsgebruik (Noodzakelijk vs Verspild)",
+        text: "Onnodig Binnenverlichtingsgebruik",
       },
     },
     scales: {
